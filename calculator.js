@@ -57,7 +57,7 @@ function calculate() {
 
 function backspace()
 {
-    const functions = ["sin(", "cos(", "tan(", "arcsin(", "arccos(", "arctan("];
+    const functions = ["arcsin(", "arccos(", "arctan(", "sin(", "cos(", "tan("];
 
         for (let func of functions) {
         if (display.value.endsWith(func)) {
