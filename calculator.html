@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body>
+    <div id="calculator">
+        <input id="display" readonly>
+        <div id ="keys">
+            <button onclick="addToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+
+            <button onclick="addToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+
+            <button onclick="addToDisplay('*')" class="operator-btn">*</button>
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+
+            <button onclick="addToDisplay('/')" class="operator-btn">/</button>
+            <button onclick="addToDisplay('π')">π</button>
+            <button onclick="addToDisplay('0')">0</button>
+            <button onclick="addToDisplay('.')">.</button>
+
+            <button onclick="addToDisplay('(')" class="operator-btn">(</button>
+            <button onclick="addToDisplay('sin(')">sin</button>
+            <button onclick="addToDisplay('cos(')">cos</button>
+            <button onclick="addToDisplay('tan(')">tan</button>
+
+            <button onclick="addToDisplay(')')" class="operator-btn">)</button>
+            <button onclick="addToDisplay('arcsin(')" style="font-size: 1.5rem;">arcsin</button>
+            <button onclick="addToDisplay('arccos(')" style="font-size: 1.5rem;">arccos</button>
+            <button onclick="addToDisplay('arctan(')" style="font-size: 1.5rem;">arctan</button>
+            
+            <button onclick="addToDisplay('^')" class="operator-btn">^</button>
+            <button onclick="clearDisplay()" class="operator-btn">Clear</button>
+            <button onclick="calculate()" class="operator-btn">=</button>
+            <button onclick="backspace()" class="operator-btn">Back</button>
+
+
+
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
