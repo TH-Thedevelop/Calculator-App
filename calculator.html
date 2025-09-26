@@ -8,46 +8,178 @@
 </head>
 
 <body>
+    <div class="navbar-hover-area" onmouseenter="showNavbar()" onmouseleave="hideNavbar()"></div>
+    <!-- Adding navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <h2>Calculator</h2>
+            <div class="mode-toggle">
+                <button id="normal-mode" class="mode-btn active" onclick="switchMode('normal')">Standard</button>
+                <button id="scientific-mode" class="mode-btn" onclick="switchMode('scientific')">Scientific</button>
+                <button id="conversion-mode" class="mode-btn" onclick="switchMode('conversion')">Conversion</button>
+                <button id="navbar-history-btn" class="navbar-history-btn" onclick="toggleHistorySidebar()" title="Toggle History Panel">📜</button>
+            </div>
+        </div>
+    </nav>
+    
     <div id="calculator">
         <input id="display" readonly>
-        <div id ="keys">
+        
+        <!-- History sidebar - NEW: Collapsible history panel -->
+        <div id="history-sidebar" class="history-panel hidden">
+            <div class="history-header">
+                <h3>Calculation History</h3>
+                <button id="toggle-history" class="history-toggle-btn" onclick="toggleHistorySidebar()">✕</button>
+            </div>
+            <div id="history-content" class="history-list">
+                <!-- History items will be populated by JavaScript -->
+            </div>
+        </div>
+        <!-- Basic calculator mode - Only essential functions -->
+        <div id="normal-keys" class="keyboard-mode">
+            <button onclick="clearDisplay()" class="operator-btn">Clear</button>
+            <button onclick="showHistory()" class="history-btn" title="Show History (Ctrl+H)">📋</button>
+            <button onclick="navigateHistory('up')" class="history-btn" title="Previous (↑)">↑</button>
+            <button onclick="addToDisplay('/')" class="operator-btn">/</button>
+
+            <button onclick="addToDisplay('(')" class="operator-btn">(</button>
+            <button onclick="addToDisplay(')')" class="operator-btn">)</button>
+            <button onclick="addToDisplay('*')" class="operator-btn">×</button>
+            <button onclick="addToDisplay('-')" class="operator-btn">-</button>
+
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="addToDisplay('+')" class="operator-btn">+</button>
+
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="calculate()" class="operator-btn">=</button>
+
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="navigateHistory('down')" class="history-btn" title="Next (↓)">↓</button>
+
+            <button onclick="addToDisplay('0')" style="grid-column: span 2;">0</button>
+            <button onclick="addToDisplay('.')">.</button>
+            <button onclick="clearHistory()" class="history-btn" title="Clear History (Ctrl+L)">🗑️</button>
+        </div>
+        <!-- Scientific keys or scientific mode -->
+        <div id="scientific-keys" class="keyboard-mode" style="display: none;">
+            <!-- Row 1: History functions -->
+            <button onclick="showHistory()" class="history-btn" title="Show History (Ctrl+H)">📋</button>
+            <button onclick="navigateHistory('up')" class="history-btn" title="Previous (↑)">↑</button>
+            <button onclick="navigateHistory('down')" class="history-btn" title="Next (↓)">↓</button>
+            <button onclick="clearHistory()" class="history-btn" title="Clear History (Ctrl+L)">🗑️</button>
+            <button onclick="clearDisplay()" class="operator-btn">Clear</button>
+
+            <!-- Row 2: Basic operations and numbers -->
             <button onclick="addToDisplay('+')" class="operator-btn">+</button>
             <button onclick="addToDisplay('7')">7</button>
             <button onclick="addToDisplay('8')">8</button>
             <button onclick="addToDisplay('9')">9</button>
+            <button onclick="addToDisplay('(')" class="operator-btn">(</button>
 
             <button onclick="addToDisplay('-')" class="operator-btn">-</button>
             <button onclick="addToDisplay('4')">4</button>
             <button onclick="addToDisplay('5')">5</button>
             <button onclick="addToDisplay('6')">6</button>
+            <button onclick="addToDisplay(')')" class="operator-btn">)</button>
 
             <button onclick="addToDisplay('*')" class="operator-btn">*</button>
             <button onclick="addToDisplay('1')">1</button>
             <button onclick="addToDisplay('2')">2</button>
             <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('^')" class="operator-btn">^</button>
 
             <button onclick="addToDisplay('/')" class="operator-btn">/</button>
-            <button onclick="addToDisplay('π')">π</button>
             <button onclick="addToDisplay('0')">0</button>
             <button onclick="addToDisplay('.')">.</button>
+            <button onclick="addToDisplay('π')">π</button>
+            <button onclick="addToDisplay('e')" class="operator-btn">e</button>
 
-            <button onclick="addToDisplay('(')" class="operator-btn">(</button>
+            <!-- Row 3: Trigonometric functions -->
             <button onclick="addToDisplay('sin(')">sin</button>
             <button onclick="addToDisplay('cos(')">cos</button>
             <button onclick="addToDisplay('tan(')">tan</button>
-
-            <button onclick="addToDisplay(')')" class="operator-btn">)</button>
-            <button onclick="addToDisplay('arcsin(')" style="font-size: 1.5rem;">arcsin</button>
-            <button onclick="addToDisplay('arccos(')" style="font-size: 1.5rem;">arccos</button>
-            <button onclick="addToDisplay('arctan(')" style="font-size: 1.5rem;">arctan</button>
-            
-            <button onclick="addToDisplay('^')" class="operator-btn">^</button>
-            <button onclick="clearDisplay()" class="operator-btn">Clear</button>
             <button onclick="calculate()" class="operator-btn">=</button>
             <button onclick="backspace()" class="operator-btn">Back</button>
 
+            <button onclick="addToDisplay('arcsin(')" style="font-size: 1.2rem;">arcsin</button>
+            <button onclick="addToDisplay('arccos(')" style="font-size: 1.2rem;">arccos</button>
+            <button onclick="addToDisplay('arctan(')" style="font-size: 1.2rem;">arctan</button>
+            <button onclick="addToDisplay('abs(')" class="operator-btn">|x|</button>
+            <button onclick="addToDisplay('sqrt(')" class="operator-btn">√</button>
 
+            <!-- Row 4: Mathematical functions and conversions -->
+            <button onclick="addToDisplay('log(')" class="operator-btn">log</button>
+            <button onclick="addToDisplay('ln(')" class="operator-btn">ln</button>
+            <button onclick="addToDisplay('factorial(')" class="operator-btn">!</button>
+            <button onclick="addToDisplay('exp(')" class="operator-btn">e^x</button>
+            <button onclick="addToDisplay('10^')" class="operator-btn">10^x</button>
 
+            <button onclick="addToDisplay('^')" class="operator-btn">^</button>
+            <button onclick="addToDisplay('%')" class="operator-btn">%</button>
+            <button onclick="addToDisplay('10^')" class="operator-btn">10^x</button>
+            <button onclick="addToDisplay('exp(')" class="operator-btn">e^x</button>
+            <button onclick="addToDisplay('abs(')" class="operator-btn">|x|</button>
+            <button onclick="addToDisplay('sqrt(')" class="operator-btn">√</button>
+
+            <button onclick="addToDisplay('log(')" class="operator-btn">log</button>
+            <button onclick="addToDisplay('ln(')" class="operator-btn">ln</button>
+            <button onclick="addToDisplay('factorial(')" class="operator-btn">!</button>
+            <button onclick="addToDisplay('(')" class="operator-btn">(</button>
+            <button onclick="addToDisplay(')')" class="operator-btn">)</button>
+            <button onclick="addToDisplay('π')">π</button>
+        </div>
+        
+        <!-- Conversion mode -->
+        <div id="conversion-keys" class="keyboard-mode" style="display: none;">
+            <!-- Temperature conversions -->
+            <button onclick="clearDisplay()" class="operator-btn">Clear</button>
+            <button onclick="showHistory()" class="history-btn" title="Show History (Ctrl+H)">📋</button>
+            <button onclick="quickConvert('celsius-to-fahrenheit')" class="convert-btn" title="°C to °F">°C→°F</button>
+            <button onclick="quickConvert('fahrenheit-to-celsius')" class="convert-btn" title="°F to °C">°F→°C</button>
+
+            <!-- Length conversions -->
+            <button onclick="quickConvert('meter-to-foot')" class="convert-btn" title="Meter to Foot">m→ft</button>
+            <button onclick="quickConvert('foot-to-meter')" class="convert-btn" title="Foot to Meter">ft→m</button>
+            <button onclick="quickConvert('kilometer-to-mile')" class="convert-btn" title="Km to Mile">km→mi</button>
+            <button onclick="quickConvert('mile-to-kilometer')" class="convert-btn" title="Mile to Km">mi→km</button>
+
+            <!-- Weight conversions -->
+            <button onclick="quickConvert('kilogram-to-pound')" class="convert-btn" title="Kg to Lb">kg→lb</button>
+            <button onclick="quickConvert('pound-to-kilogram')" class="convert-btn" title="Lb to Kg">lb→kg</button>
+            <button onclick="quickConvert('gram-to-ounce')" class="convert-btn" title="Gram to Ounce">g→oz</button>
+            <button onclick="quickConvert('ounce-to-gram')" class="convert-btn" title="Ounce to Gram">oz→g</button>
+
+            <!-- Volume conversions -->
+            <button onclick="quickConvert('liter-to-gallon')" class="convert-btn" title="Liter to Gallon">L→gal</button>
+            <button onclick="quickConvert('gallon-to-liter')" class="convert-btn" title="Gallon to Liter">gal→L</button>
+            <button onclick="quickConvert('milliliter-to-cup')" class="convert-btn" title="ML to Cup">ml→cup</button>
+            <button onclick="quickConvert('cup-to-milliliter')" class="convert-btn" title="Cup to ML">cup→ml</button>
+
+            <!-- Number input area -->
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('.')">.</button>
+
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="backspace()" class="operator-btn">⌫</button>
+
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="showConvertMenu()" class="convert-btn" title="More Conversions">More</button>
+
+            <button onclick="addToDisplay('0')" style="grid-column: span 2;">0</button>
+            <button onclick="toggleHistorySidebar()" class="history-btn" title="Toggle History Panel">📜</button>
+            <button onclick="navigateHistory('down')" class="history-btn" title="Next (↓)">↓</button>
         </div>
     </div>
 

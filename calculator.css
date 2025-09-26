@@ -1,72 +1,459 @@
 
+/* Body styling - CHANGED: Added global reset and background */
 body
 {
-    margin: 50px;
-    margin-top: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: white;
-}
-#calculator
-{
-    font-family: Arial, sans-serif;
-    background-color: rgba(40, 44, 43, 0.30);
-    border-radius: 10px;
-    max-width: 1000px;
-    overflow: hidden;
-}
-#display
-{
-    width: 100%;
-    padding: 20px;
-    font-size: 5rem;
-    text-align: left;
-    border: none;
-    background-color: rgba(78, 109, 106, 0.40);
-    color: white;
-}
-#keys
-{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-    padding: 24px;
-}
-button
-{
-    width: 120px;
-    height: 90px;
-    border-radius: 30px;
-    border: none;
-    background-color:rgba(12, 11, 11, 0.30);
-    color:rgb(255, 255, 255);
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
+    margin: 0;                    /* CHANGED: Removed default margin */
+    padding: 0;                   /* CHANGED: Removed default padding */
+    background-color: #f0f0f0;    /* CHANGED: Added light gray background */
+    font-family: Arial, sans-serif; /* CHANGED: Set consistent font family */
+    border-top-left-radius: 25px; /* Adjust this value */
+    border-top-right-radius: 25px; /* Adjust this value */
 }
 
+/* Navigation bar styling - NEW: Beautiful color palette navbar */
+#navbar
+{
+    background-color: #777DA7;                 /* NEW: Muted purple background */
+    padding: 2px 0;                            /* CHANGED: Reduced from 4px 0 to make it much smaller */
+    box-shadow: 0 2px 10px rgba(119, 125, 167, 0.3); /* NEW: Purple shadow */
+    position: fixed;                           /* NEW: Fixed positioning to stay at top */
+    top: 0;                                   /* NEW: Position at top of viewport */
+    left: 0;                                  /* NEW: Full width positioning */
+    right: 0;                                 /* NEW: Full width positioning */
+    z-index: 1000;                            /* NEW: High z-index to stay above calculator */
+    transform: translateY(0);                  /* NEW: Initial position for animation */
+    transition: transform 0.3s ease-in-out;   /* NEW: Smooth slide animation */
+}
+
+/* Auto-hide navbar when not hovering - NEW: Hide navbar functionality */
+#navbar.hidden
+{
+    transform: translateY(-100%);              /* NEW: Slide navbar up and out of view */
+}
+
+/* Hover area to show navbar - NEW: Invisible area at top to trigger navbar */
+.navbar-hover-area
+{
+    position: fixed;                           /* NEW: Fixed positioning */
+    top: 0;                                   /* NEW: At top of viewport */
+    left: 0;                                  /* NEW: Full width */
+    right: 0;                                 /* NEW: Full width */
+    height: 10px;                             /* NEW: Small hover area */
+    z-index: 1001;                            /* NEW: Above navbar */
+    background: transparent;                  /* NEW: Invisible */
+}
+
+/* Navigation container - NEW: Flexbox layout for navbar content */
+.nav-container
+{
+    max-width: 1000px;          /* NEW: Match calculator max width */
+    margin: 0 auto;            /* NEW: Center the navbar content */
+    display: flex;             /* NEW: Flexbox for horizontal layout */
+    justify-content: space-between; /* NEW: Space between title and buttons */
+    align-items: center;       /* NEW: Vertically center content */
+    padding: 0 5px;          /* CHANGED: Reduced from 15px to 10px for even smaller navbar */
+}
+
+/* Navigation title styling - NEW: Calculator title in navbar */
+.nav-container h2
+{
+    color: white;              /* NEW: White text on dark navbar */
+    margin: 0;                /* NEW: Remove default margin */
+    font-size: 1rem;          /* CHANGED: Reduced from 1.1rem to 1rem for ultra-compact navbar */
+    font-weight: bold;        /* NEW: Bold text for emphasis */
+}
+
+/* Mode toggle button container - NEW: Container for Normal/Scientific buttons */
+.mode-toggle
+{
+    display: flex;             /* NEW: Flexbox for horizontal button layout */
+    gap: 4px;                /* CHANGED: Reduced from 6px to 4px for ultra-tight spacing */
+}
+
+/* Mode toggle buttons - NEW: Beautiful color palette mode buttons */
+.mode-btn
+{
+    padding: 3px 8px;                        /* CHANGED: Reduced from 4px 12px to 3px 8px for ultra-compact size */
+    border: none;                            /* NEW: Remove default button border */
+    border-radius: 12px;                     /* CHANGED: Reduced from 15px to 12px for more compact look */
+    background-color: #94C9A9;               /* NEW: Muted green button background */
+    color: white;                            /* NEW: White text on buttons */
+    font-size: 0.75rem;                      /* CHANGED: Reduced from 0.8rem to 0.75rem for ultra-small text */
+    font-weight: bold;                       /* NEW: Bold text for better visibility */
+    cursor: pointer;                         /* NEW: Pointer cursor on hover */
+    transition: all 0.3s ease;              /* NEW: Smooth transitions for hover effects */
+    box-shadow: 0 1px 3px rgba(148, 201, 169, 0.3); /* NEW: Subtle green shadow */
+}
+
+/* Mode button hover effects - NEW: Beautiful color palette hover states */
+.mode-btn:hover
+{
+    background-color: #C6ECAE;                 /* NEW: Light green on hover */
+    transform: translateY(-2px);               /* NEW: Subtle lift effect on hover */
+    box-shadow: 0 2px 6px rgba(198, 236, 174, 0.4); /* NEW: Green shadow on hover */
+}
+
+/* Active mode button styling - NEW: Beautiful color palette active state */
+.mode-btn.active
+{
+    background-color: #FE5F55;                 /* NEW: Orange for active state */
+    box-shadow: 0 4px 15px rgba(254, 95, 85, 0.4); /* NEW: Orange glow effect */
+}
+
+/* Navbar history button - NEW: History icon in navbar */
+.navbar-history-btn
+{
+    background-color: #94C9A9;                 /* NEW: Green background */
+    color: white;                              /* NEW: White text */
+    border: none;                              /* NEW: No border */
+    padding: 6px 12px;                         /* NEW: Button padding */
+    border-radius: 12px;                       /* NEW: Rounded corners */
+    font-size: 1rem;                           /* NEW: Font size */
+    font-weight: 600;                          /* NEW: Bold text */
+    cursor: pointer;                           /* NEW: Pointer cursor */
+    transition: all 0.3s ease;                 /* NEW: Smooth transitions */
+    box-shadow: 0 2px 6px rgba(148, 201, 169, 0.3); /* NEW: Green shadow */
+    margin-left: 8px;                          /* NEW: Space from mode buttons */
+}
+
+/* Navbar history button hover - NEW: Hover effect */
+.navbar-history-btn:hover
+{
+    background-color: #C6ECAE;                 /* NEW: Light green on hover */
+    transform: translateY(-2px);               /* NEW: Lift effect */
+    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Enhanced shadow */
+}
+
+/* Navbar history button active - NEW: Active state */
+.navbar-history-btn:active
+{
+    background-color: #FE5F55;                 /* NEW: Orange when active */
+    transform: translateY(0);                  /* NEW: Reset transform */
+}
+
+/* Body layout adjustment - CHANGED: Account for fixed navbar */
+body
+{
+    margin-top: 35px;                        /* CHANGED: Reduced from 45px to 35px to match ultra-compact navbar */
+    display: flex;                          /* CHANGED: Flexbox for centering calculator */
+    justify-content: center;                /* CHANGED: Center calculator horizontally */
+    align-items: center;                    /* CHANGED: Center calculator vertically */
+    min-height: calc(100vh - 35px);        /* CHANGED: Adjusted height calculation for ultra-compact navbar */
+    background-color: white;               /* CHANGED: White background for calculator area */
+}
+/* Calculator container - NEW: Beautiful color palette styling */
+#calculator
+{
+    font-family: 'Segoe UI', Arial, sans-serif; /* IMPROVED: Better font family */
+    background-color: #777DA7;                  /* NEW: Muted purple background */
+    border-radius: 25px;                        /* IMPROVED: More rounded corners */
+    max-width: 575px;                           /* CHANGED: Increased width for conversion mode */
+    width: 100%;                                /* IMPROVED: Responsive width */
+    overflow: visible;                          /* CHANGED: Allow history sidebar to overflow */
+    box-shadow: 0 8px 32px rgba(119, 125, 167, 0.3); /* NEW: Purple shadow */
+    border: 2px solid #94C9A9;                  /* NEW: Green border accent */
+    position: relative;                         /* NEW: Relative positioning for sidebar */
+}
+/* Calculator display - NEW: Beautiful color palette display */
+#display
+{
+    width: 100%;                            /* ORIGINAL: Full width */
+    padding: 25px 20px;                     /* IMPROVED: Better padding (top/bottom, left/right) */
+    font-size: 2.5rem;                      /* IMPROVED: More reasonable font size */
+    text-align: right;                      /* IMPROVED: Right-aligned like real calculators */
+    border-top-left-radius: 25px; /* Adjust this value */
+    border-top-right-radius: 25px; /* Adjust this value */
+    border: none;                           /* ORIGINAL: No border */
+    background-color: #FE5F55;              /* NEW: Vibrant reddish-orange background */
+    color: white;                           /* ORIGINAL: White text */
+    font-weight: 300;                       /* IMPROVED: Lighter font weight for modern look */
+    letter-spacing: 1px;                    /* IMPROVED: Better character spacing */
+    box-sizing: border-box;                 /* IMPROVED: Include padding in width calculation */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* NEW: Subtle text shadow for readability */
+}
+/* Keyboard mode containers - NEW: Beautiful color palette button area */
+.keyboard-mode
+{
+    display: grid;                          /* CHANGED: Grid layout for button arrangement */
+    gap: 12px;                             /* IMPROVED: Better spacing between buttons */
+    padding: 20px;                         /* IMPROVED: More organized padding */
+    background-color: #C6ECAE;             /* NEW: Pale yellow-green background for button area */
+    border-bottom-left-radius: 25px; /* Adjust this value */
+    border-bottom-right-radius: 25px; /* Adjust this value */
+}
+
+/* Basic calculator layout - IMPROVED: Better organized 4-column grid */
+#normal-keys
+{
+    grid-template-columns: repeat(4, 1fr);  /* CHANGED: 4 equal columns for basic calculator */
+    gap: 12px;                             /* IMPROVED: Consistent gap with parent container */
+}
+
+/* Basic calculator buttons - IMPROVED: Better organized button styling */
+#normal-keys button
+{
+    width: 100%;                           /* IMPROVED: Full width within grid cell */
+    height: 70px;                          /* IMPROVED: Better button height */
+    font-size: 1.4rem;                     /* IMPROVED: Better font size */
+    border-radius: 12px;                   /* IMPROVED: More modern rounded corners */
+    font-weight: 500;                      /* IMPROVED: Medium font weight */
+    transition: all 0.2s ease;            /* IMPROVED: Smooth transitions */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* IMPROVED: Subtle button shadow */
+}
+
+/* Scientific mode layout - IMPROVED: Better organized 5-column grid */
+#scientific-keys
+{
+    grid-template-columns: repeat(5, 1fr);  /* NEW: 5 equal columns for scientific mode */
+    gap: 12px;                             /* IMPROVED: Consistent gap */
+}
+
+/* Conversion mode layout - NEW: Dedicated conversion mode styling */
+#conversion-keys
+{
+    grid-template-columns: repeat(4, 1fr);  /* NEW: 4 equal columns for conversion mode */
+    gap: 15px;                             /* CHANGED: Increased gap for better spacing */
+}
+
+/* Conversion mode buttons - NEW: Optimized button sizes for wider layout */
+#conversion-keys button
+{
+    height: 70px;                          /* NEW: Slightly taller buttons for conversion mode */
+    font-size: 1.3rem;                     /* NEW: Slightly larger font for better readability */
+}
+
+/* History sidebar - NEW: Collapsible history panel styling */
+.history-panel
+{
+    position: absolute;                     /* NEW: Absolute positioning for sidebar */
+    top: 0;                                /* NEW: Align to top of calculator */
+    right: -250px;                         /* NEW: Start hidden off-screen */
+    width: 240px;                          /* NEW: Fixed width for history panel */
+    height: 100%;                          /* NEW: Full height of calculator */
+    background-color: #94C9A9;             /* NEW: Green background matching theme */
+    border-radius: 0 20px 20px 0;          /* NEW: Rounded right corners */
+    border: 2px solid #777DA7;             /* NEW: Purple border accent */
+    box-shadow: -4px 0 15px rgba(119, 125, 167, 0.3); /* NEW: Left shadow */
+    transition: right 0.3s ease-in-out;    /* NEW: Smooth slide animation */
+    z-index: 10;                           /* NEW: Above calculator content */
+    overflow: hidden;                      /* NEW: Hide overflow content */
+}
+
+/* History panel when visible - NEW: Slide into view */
+.history-panel:not(.hidden)
+{
+    right: -250px;                              /* NEW: Slide into view */
+    opacity: 1;                            /* NEW: Make fully visible */
+    visibility: visible;                   /* NEW: Make visible in layout */
+    pointer-events: auto;                  /* NEW: Enable interactions when visible */
+}
+
+/* History panel when hidden - NEW: Slide out of view */
+.history-panel.hidden
+{
+    right: 0;                         /* CHANGED: Move further off-screen */
+    opacity: 0;                            /* NEW: Make completely transparent */
+    visibility: hidden;                    /* NEW: Completely hide from view */
+    pointer-events: none;                  /* NEW: Disable interactions when hidden */
+    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* NEW: Smooth transitions */
+}
+
+/* History header - NEW: Header styling for history panel */
+.history-header
+{
+    background-color: #777DA7;             /* NEW: Purple header background */
+    padding: 15px;                         /* NEW: Header padding */
+    display: flex;                         /* NEW: Flexbox for header layout */
+    justify-content: space-between;        /* NEW: Space between title and close button */
+    align-items: center;                   /* NEW: Center align items */
+    border-bottom: 2px solid #94C9A9;     /* NEW: Bottom border */
+}
+
+/* History header title - NEW: Title styling */
+.history-header h3
+{
+    margin: 0;                             /* NEW: Remove default margin */
+    color: white;                          /* NEW: White text */
+    font-size: 1.1rem;                     /* NEW: Header font size */
+    font-weight: 600;                      /* NEW: Bold text */
+}
+
+/* History toggle button - NEW: Close button styling */
+.history-toggle-btn
+{
+    background: none;                      /* NEW: No background */
+    border: none;                          /* NEW: No border */
+    color: white;                          /* NEW: White text */
+    font-size: 1.2rem;                     /* NEW: Larger close icon */
+    cursor: pointer;                       /* NEW: Pointer cursor */
+    padding: 5px;                          /* NEW: Button padding */
+    border-radius: 50%;                    /* NEW: Circular button */
+    transition: background-color 0.2s ease; /* NEW: Smooth hover transition */
+}
+
+/* History toggle button hover - NEW: Hover effect */
+.history-toggle-btn:hover
+{
+    background-color: rgba(255, 255, 255, 0.2); /* NEW: Semi-transparent white background */
+}
+
+/* History list container - NEW: Scrollable history content */
+.history-list
+{
+    height: calc(100% - 70px);             /* NEW: Full height minus header */
+    overflow-y: auto;                      /* NEW: Vertical scrolling */
+    padding: 10px;                         /* NEW: List padding */
+}
+
+/* History item - NEW: Individual history entry styling */
+.history-item
+{
+    background-color: #C6ECAE;             /* NEW: Light green background */
+    margin-bottom: 8px;                    /* NEW: Spacing between items */
+    padding: 10px;                         /* NEW: Item padding */
+    border-radius: 8px;                    /* NEW: Rounded corners */
+    border-left: 4px solid #FE5F55;       /* NEW: Orange left border accent */
+    cursor: pointer;                       /* NEW: Pointer cursor for clickable items */
+    transition: all 0.2s ease;             /* NEW: Smooth hover transition */
+    font-size: 0.9rem;                     /* NEW: Smaller font for history items */
+}
+
+/* History item hover - NEW: Hover effect for history items */
+.history-item:hover
+{
+    background-color: #FE5F55;             /* NEW: Orange background on hover */
+    color: white;                          /* NEW: White text on hover */
+    transform: translateX(2px);            /* NEW: Slight slide effect */
+}
+
+/* History expression - NEW: Expression styling */
+.history-expression
+{
+    font-weight: 600;                      /* NEW: Bold expression text */
+    margin-bottom: 4px;                    /* NEW: Space below expression */
+}
+
+/* History result - NEW: Result styling */
+.history-result
+{
+    color: #777DA7;                        /* NEW: Purple result text */
+    font-weight: 500;                      /* NEW: Medium weight for result */
+}
+
+/* History timestamp - NEW: Timestamp styling */
+.history-timestamp
+{
+    font-size: 0.8rem;                     /* NEW: Smaller timestamp text */
+    color: #777DA7;                        /* NEW: Purple timestamp text */
+    margin-top: 4px;                       /* NEW: Space above timestamp */
+    font-style: italic;                    /* NEW: Italic timestamp */
+}
+
+/* Scientific mode buttons - IMPROVED: Better organized scientific buttons */
+#scientific-keys button
+{
+    width: 100%;                           /* IMPROVED: Full width within grid cell */
+    height: 65px;                          /* IMPROVED: Better button height */
+    font-size: 1.2rem;                     /* IMPROVED: Better font size for scientific mode */
+    border-radius: 12px;                   /* IMPROVED: Consistent rounded corners */
+    font-weight: 500;                      /* IMPROVED: Medium font weight */
+    transition: all 0.2s ease;            /* IMPROVED: Smooth transitions */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* IMPROVED: Subtle button shadow */
+}
+
+/* Calculator buttons - NEW: Beautiful color palette button styling */
+button
+{
+    width: 120px;                           /* ORIGINAL: Button width */
+    height: 90px;                           /* ORIGINAL: Button height */
+    border-radius: 12px;                    /* IMPROVED: More modern rounded corners */
+    border: none;                           /* ORIGINAL: No border */
+    background-color: #94C9A9;              /* NEW: Muted green background for numbers */
+    color: white;                           /* NEW: White text */
+    font-size: 1.6rem;                      /* IMPROVED: Better font size */
+    font-weight: 500;                       /* IMPROVED: Medium font weight */
+    cursor: pointer;                        /* ORIGINAL: Pointer cursor */
+    transition: all 0.2s ease;             /* IMPROVED: Smooth transitions */
+    box-shadow: 0 2px 8px rgba(148, 201, 169, 0.3); /* NEW: Green shadow */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* NEW: Subtle text shadow */
+}
+
+/* Button hover effects - NEW: Beautiful color palette hover states */
 button:hover
 {
-    background-color: rgba(89, 119, 109, 0.4);
+    background-color: #4aae0b;               /* NEW: Lighter green on hover */
+    transform: translateY(-1px);               /* IMPROVED: Subtle lift effect */
+    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Enhanced green shadow */
 }
 
 button:active
 {
-    background-color: rgba(89, 119, 109, 0.5);
+    background-color: #777DA7;               /* NEW: Purple accent on click */
+    transform: translateY(0);                  /* IMPROVED: Reset transform on click */
 }
 
+/* Operator button styling - NEW: Beautiful color palette operator styling */
 .operator-btn
 {
-    background-color: rgba(92, 119, 134, 0.5);
+    background-color: #FE5F55;                 /* NEW: Vibrant reddish-orange for operators */
+    color: white;                              /* IMPROVED: Ensure white text */
+    font-weight: 600;                          /* IMPROVED: Bolder text for operators */
+    box-shadow: 0 2px 8px rgba(254, 95, 85, 0.3); /* NEW: Orange shadow */
 }
 
 .operator-btn:hover
 {
-    background-color: rgba(92, 119, 134, 0.65);
+    background-color: #ac1c12;                /* NEW: Light green on hover */
+    transform: translateY(-1px);               /* IMPROVED: Consistent hover effect */
+    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Green shadow on hover */
 }
+
 .operator-btn:active
 {
-    background-color: rgba(92, 119, 134, 0.75);
+    background-color: #777DA7;                 /* NEW: Purple accent on click */
+}
+
+/* History button styling - NEW: Beautiful color palette history styling */
+.history-btn
+{
+    background-color: #777DA7;                   /* NEW: Muted purple for history buttons */
+    color: white;                                /* NEW: White text */
+    font-weight: 600;                            /* NEW: Bold text */
+    font-size: 1.2rem;                          /* NEW: Slightly smaller font for icons */
+    box-shadow: 0 2px 8px rgba(119, 125, 167, 0.3); /* NEW: Purple shadow */
+}
+
+.history-btn:hover
+{
+    background-color: #16206c;                   /* NEW: Light green on hover */
+    transform: translateY(-1px);                 /* NEW: Consistent hover effect */
+    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Green shadow on hover */
+}
+
+.history-btn:active
+{
+    background-color: #FE5F55;                   /* NEW: Orange accent on click */
+}
+
+/* Conversion button styling - NEW: Beautiful color palette conversion styling */
+.convert-btn
+{
+    background-color: #94C9A9;                   /* NEW: Muted green for conversion buttons */
+    color: white;                                /* NEW: White text */
+    font-weight: 600;                            /* NEW: Bold text */
+    font-size: 1rem;                            /* NEW: Smaller font for conversion labels */
+    box-shadow: 0 2px 8px rgba(148, 201, 169, 0.3); /* NEW: Green shadow */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* NEW: Subtle text shadow */
+}
+
+.convert-btn:hover
+{
+    background-color: #4aae0b;                   /* NEW: Light green on hover */
+    transform: translateY(-1px);                 /* NEW: Consistent hover effect */
+    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Green shadow on hover */
+}
+
+.convert-btn:active
+{
+    background-color: #777DA7;                   /* NEW: Purple accent on click */
 }
