@@ -28,10 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isTouchDevice) {
         // For mobile devices, keep navbar visible by default
         navbar.classList.remove('hidden');
-        // Add tap to toggle functionality for mobile
-        navbar.addEventListener('click', function() {
-            navbar.classList.toggle('hidden');
-        });
+        // Don't add tap to toggle for mobile since we have mobile menu
     } else {
         // For desktop devices, use hover behavior
         setTimeout(() => {
@@ -134,10 +131,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function switchMode(mode) {
     currentMode = mode;
     
-    // Update button states
+    // Update desktop button states
     document.getElementById('normal-mode').classList.toggle('active', mode === 'normal');
     document.getElementById('scientific-mode').classList.toggle('active', mode === 'scientific');
     document.getElementById('conversion-mode').classList.toggle('active', mode === 'conversion');
+    
+    // Update mobile button states
+    updateMobileModeButtons();
     
     // Show/hide appropriate keyboard
     document.getElementById('normal-keys').style.display = mode === 'normal' ? 'grid' : 'none';
@@ -668,3 +668,96 @@ function addToDisplayBasic(input)
         }
     }
 }
+
+// ========================================
+// MOBILE MENU FUNCTIONS
+// ========================================
+
+// Toggle mobile menu - NEW: Show/hide mobile menu
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    
+    if (mobileMenu.classList.contains('open')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+// Open mobile menu - NEW: Show mobile menu
+function openMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    
+    mobileMenu.classList.add('open');
+    mobileToggle.classList.add('active');
+    
+    // Add haptic feedback if available
+    if (navigator.vibrate) {
+        navigator.vibrate(30);
+    }
+    
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = 'hidden';
+}
+
+// Close mobile menu - NEW: Hide mobile menu
+function closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    
+    mobileMenu.classList.remove('open');
+    mobileToggle.classList.remove('active');
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Update mobile mode buttons - NEW: Sync mobile menu with current mode
+function updateMobileModeButtons() {
+    const mobileModeButtons = document.querySelectorAll('.mobile-mode-btn');
+    
+    mobileModeButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    // Activate the current mode button
+    const currentModeButton = document.querySelector(`.mobile-mode-btn[onclick*="'${currentMode}'"]`);
+    if (currentModeButton) {
+        currentModeButton.classList.add('active');
+    }
+}
+
+// Close mobile menu when clicking outside - NEW: Better UX
+document.addEventListener('click', function(event) {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const navbar = document.getElementById('navbar');
+    
+    // Check if click is outside navbar and mobile menu is open
+    if (mobileMenu.classList.contains('open') && 
+        !navbar.contains(event.target)) {
+        closeMobileMenu();
+    }
+});
+
+// Close mobile menu on escape key - NEW: Keyboard accessibility
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu.classList.contains('open')) {
+            closeMobileMenu();
+        }
+    }
+});
+
+// Handle window resize - NEW: Responsive behavior
+window.addEventListener('resize', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    // Close mobile menu if screen becomes desktop size
+    if (window.innerWidth > 768 && mobileMenu.classList.contains('open')) {
+        closeMobileMenu();
+    }
+});

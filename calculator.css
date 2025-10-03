@@ -43,15 +43,32 @@ body
     background: transparent;                  /* NEW: Invisible */
 }
 
-/* Navigation container - NEW: Flexbox layout for navbar content */
+/* Navigation container - NEW: Flexible layout for navbar content */
 .nav-container
 {
     max-width: 1000px;          /* NEW: Match calculator max width */
     margin: 0 auto;            /* NEW: Center the navbar content */
     display: flex;             /* NEW: Flexbox for horizontal layout */
-    justify-content: space-between; /* NEW: Space between title and buttons */
+    justify-content: space-between; /* NEW: Space between sections */
     align-items: center;       /* NEW: Vertically center content */
     padding: 0 5px;          /* CHANGED: Reduced from 15px to 10px for even smaller navbar */
+    position: relative;       /* NEW: For mobile menu positioning */
+}
+
+/* Navigation left section - NEW: Logo area */
+.nav-left
+{
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+/* Navigation right section - NEW: Mode toggle area */
+.nav-right
+{
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
 }
 
 /* Logo container - NEW: Container for calculator logo */
@@ -150,6 +167,206 @@ body
 {
     background-color: #FE5F55;                 /* NEW: Orange when active */
     transform: translateY(0);                  /* NEW: Reset transform */
+}
+
+/* ========================================
+   MOBILE MENU STYLES
+   ======================================== */
+
+/* Mobile menu toggle button - NEW: Hamburger menu */
+.mobile-menu-toggle
+{
+    display: none;                             /* NEW: Hidden by default */
+    flex-direction: column;                    /* NEW: Stack hamburger lines */
+    justify-content: center;                   /* NEW: Center hamburger lines */
+    align-items: center;                       /* NEW: Center hamburger lines */
+    width: 40px;                              /* NEW: Fixed width */
+    height: 40px;                             /* NEW: Fixed height */
+    background: none;                         /* NEW: No background */
+    border: none;                             /* NEW: No border */
+    cursor: pointer;                          /* NEW: Pointer cursor */
+    padding: 8px;                             /* NEW: Padding for touch target */
+    border-radius: 8px;                       /* NEW: Rounded corners */
+    transition: all 0.3s ease;                /* NEW: Smooth transitions */
+}
+
+/* Hamburger lines - NEW: Three lines for menu */
+.hamburger-line
+{
+    width: 20px;                              /* NEW: Line width */
+    height: 2px;                              /* NEW: Line height */
+    background-color: white;                  /* NEW: White lines */
+    margin: 2px 0;                            /* NEW: Space between lines */
+    transition: all 0.3s ease;                /* NEW: Smooth transitions */
+    border-radius: 1px;                       /* NEW: Rounded line ends */
+}
+
+/* Mobile menu toggle hover - NEW: Hover effect */
+.mobile-menu-toggle:hover
+{
+    background-color: rgba(255, 255, 255, 0.1); /* NEW: Light background on hover */
+}
+
+.mobile-menu-toggle:hover .hamburger-line
+{
+    background-color: #C6ECAE;                /* NEW: Light green on hover */
+}
+
+/* Mobile menu toggle active - NEW: Active state (hamburger to X) */
+.mobile-menu-toggle.active .hamburger-line:nth-child(1)
+{
+    transform: rotate(45deg) translate(5px, 5px); /* NEW: Rotate first line */
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2)
+{
+    opacity: 0;                               /* NEW: Hide middle line */
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3)
+{
+    transform: rotate(-45deg) translate(7px, -6px); /* NEW: Rotate third line */
+}
+
+/* Mobile menu - NEW: Dropdown menu */
+.mobile-menu
+{
+    position: absolute;                        /* NEW: Absolute positioning */
+    top: 100%;                                /* NEW: Below navbar */
+    left: 0;                                  /* NEW: Full width */
+    right: 0;                                 /* NEW: Full width */
+    background-color: #777DA7;                /* NEW: Purple background */
+    border-bottom-left-radius: 15px;          /* NEW: Rounded bottom corners */
+    border-bottom-right-radius: 15px;         /* NEW: Rounded bottom corners */
+    box-shadow: 0 4px 20px rgba(119, 125, 167, 0.3); /* NEW: Drop shadow */
+    transform: translateY(-100%);             /* NEW: Start hidden above */
+    opacity: 0;                               /* NEW: Start transparent */
+    visibility: hidden;                       /* NEW: Start hidden */
+    transition: all 0.3s ease-in-out;         /* NEW: Smooth transitions */
+    z-index: 999;                             /* NEW: Above other elements */
+    overflow: hidden;                         /* NEW: Hide overflow */
+}
+
+/* Mobile menu when open - NEW: Show menu */
+.mobile-menu.open
+{
+    transform: translateY(0);                 /* NEW: Slide into view */
+    opacity: 1;                               /* NEW: Make visible */
+    visibility: visible;                      /* NEW: Make visible */
+}
+
+/* Mobile menu content - NEW: Content container */
+.mobile-menu-content
+{
+    padding: 20px;                            /* NEW: Content padding */
+}
+
+/* Mobile mode toggle - NEW: Mode selection */
+.mobile-mode-toggle
+{
+    display: flex;                            /* NEW: Flexbox layout */
+    flex-direction: column;                   /* NEW: Vertical layout */
+    gap: 8px;                                 /* NEW: Space between buttons */
+    margin-bottom: 20px;                      /* NEW: Space below */
+}
+
+/* Mobile mode button - NEW: Mode selection button */
+.mobile-mode-btn
+{
+    display: flex;                            /* NEW: Flexbox layout */
+    align-items: center;                      /* NEW: Center align items */
+    padding: 12px 16px;                       /* NEW: Button padding */
+    background-color: rgba(255, 255, 255, 0.1); /* NEW: Semi-transparent background */
+    border: none;                             /* NEW: No border */
+    border-radius: 10px;                      /* NEW: Rounded corners */
+    color: white;                             /* NEW: White text */
+    font-size: 1rem;                          /* NEW: Font size */
+    font-weight: 500;                         /* NEW: Medium weight */
+    cursor: pointer;                          /* NEW: Pointer cursor */
+    transition: all 0.3s ease;                /* NEW: Smooth transitions */
+    text-align: left;                         /* NEW: Left align text */
+    width: 100%;                              /* NEW: Full width */
+}
+
+/* Mobile mode button hover - NEW: Hover effect */
+.mobile-mode-btn:hover
+{
+    background-color: rgba(198, 236, 174, 0.3); /* NEW: Light green background */
+    transform: translateX(4px);               /* NEW: Slide right */
+}
+
+/* Mobile mode button active - NEW: Active state */
+.mobile-mode-btn.active
+{
+    background-color: #FE5F55;                /* NEW: Orange background */
+    box-shadow: 0 2px 8px rgba(254, 95, 85, 0.3); /* NEW: Orange shadow */
+}
+
+/* Mobile mode icon - NEW: Mode icon styling */
+.mode-icon
+{
+    font-size: 1.2rem;                        /* NEW: Icon size */
+    margin-right: 12px;                       /* NEW: Space after icon */
+    width: 24px;                              /* NEW: Fixed icon width */
+    text-align: center;                       /* NEW: Center icon */
+}
+
+/* Mobile mode text - NEW: Mode text styling */
+.mode-text
+{
+    flex: 1;                                  /* NEW: Take remaining space */
+    font-size: 1rem;                          /* NEW: Text size */
+}
+
+/* Mobile menu actions - NEW: Action buttons */
+.mobile-menu-actions
+{
+    display: flex;                            /* NEW: Flexbox layout */
+    flex-direction: column;                   /* NEW: Vertical layout */
+    gap: 8px;                                 /* NEW: Space between buttons */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* NEW: Top border */
+    padding-top: 16px;                        /* NEW: Top padding */
+}
+
+/* Mobile action button - NEW: Action button */
+.mobile-action-btn
+{
+    display: flex;                            /* NEW: Flexbox layout */
+    align-items: center;                      /* NEW: Center align items */
+    padding: 10px 16px;                       /* NEW: Button padding */
+    background-color: rgba(255, 255, 255, 0.1); /* NEW: Semi-transparent background */
+    border: none;                             /* NEW: No border */
+    border-radius: 8px;                       /* NEW: Rounded corners */
+    color: white;                             /* NEW: White text */
+    font-size: 0.9rem;                        /* NEW: Font size */
+    font-weight: 400;                         /* NEW: Normal weight */
+    cursor: pointer;                          /* NEW: Pointer cursor */
+    transition: all 0.3s ease;                /* NEW: Smooth transitions */
+    text-align: left;                         /* NEW: Left align text */
+    width: 100%;                              /* NEW: Full width */
+}
+
+/* Mobile action button hover - NEW: Hover effect */
+.mobile-action-btn:hover
+{
+    background-color: rgba(148, 201, 169, 0.3); /* NEW: Green background */
+    transform: translateX(4px);               /* NEW: Slide right */
+}
+
+/* Mobile action icon - NEW: Action icon styling */
+.action-icon
+{
+    font-size: 1rem;                          /* NEW: Icon size */
+    margin-right: 10px;                       /* NEW: Space after icon */
+    width: 20px;                              /* NEW: Fixed icon width */
+    text-align: center;                       /* NEW: Center icon */
+}
+
+/* Mobile action text - NEW: Action text styling */
+.action-text
+{
+    flex: 1;                                  /* NEW: Take remaining space */
+    font-size: 0.9rem;                        /* NEW: Text size */
 }
 
 /* Body layout adjustment - CHANGED: Account for fixed navbar */
@@ -491,7 +708,7 @@ button:active
    ======================================== */
 
 /* Mobile devices (320px and up) */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     /* Body adjustments for mobile */
     body {
         margin-top: 30px;
@@ -506,27 +723,32 @@ button:active
     
     .nav-container {
         padding: 0 8px;
+        justify-content: space-between;
     }
     
-    .nav-container h2 {
-        font-size: 0.9rem;
+    /* Show mobile menu toggle, hide desktop mode toggle */
+    .mobile-menu-toggle {
+        display: flex;
     }
     
-    .mode-btn {
-        padding: 2px 6px;
-        font-size: 0.7rem;
-        border-radius: 10px;
-    }
-    
-    .navbar-history-btn {
-        padding: 4px 8px;
-        font-size: 0.8rem;
+    .nav-right {
+        display: none;
     }
     
     /* Logo adjustments for mobile */
     .calculator-logo {
         width: 120px;
         height: 24px;
+    }
+    
+    /* Mobile menu specific styles */
+    .mobile-menu {
+        display: block;
+    }
+    
+    /* Ensure navbar stays visible on mobile */
+    #navbar.hidden {
+        transform: translateY(0);
     }
     
     /* Calculator container for mobile */
@@ -850,14 +1072,33 @@ button:active
         padding: 0 10px;
     }
     
+    /* Show mobile menu toggle, hide desktop mode toggle */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-right {
+        display: none;
+    }
+    
     .calculator-logo {
         width: 130px;
         height: 26px;
     }
     
-    .mode-btn {
-        padding: 3px 7px;
-        font-size: 0.75rem;
+    /* Mobile menu adjustments for iPhone 13 */
+    .mobile-menu-content {
+        padding: 16px;
+    }
+    
+    .mobile-mode-btn {
+        padding: 14px 16px;
+        font-size: 1.1rem;
+    }
+    
+    .mobile-action-btn {
+        padding: 12px 16px;
+        font-size: 1rem;
     }
     
     #calculator {
