@@ -1398,6 +1398,7 @@ button:active
 @supports (-webkit-touch-callout: none) {
     /* iOS Safari specific styles */
     #display {
+        appearance: none;
         -webkit-appearance: none;
         -webkit-user-select: none;
         -webkit-touch-callout: none;
