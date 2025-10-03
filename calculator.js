@@ -26,9 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
     if (isTouchDevice) {
-        // For mobile devices, keep navbar visible by default
+        // For mobile devices, initialize with slide down animation
         navbar.classList.remove('hidden');
-        // Don't add tap to toggle for mobile since we have mobile menu
+        navbar.classList.add('mobile-slide-down');
+        
+        // Set up mobile navbar behavior
+        setupMobileNavbar();
     } else {
         // For desktop devices, use hover behavior
         setTimeout(() => {
@@ -693,6 +696,9 @@ function openMobileMenu() {
     mobileMenu.classList.add('open');
     mobileToggle.classList.add('active');
     
+    // Show navbar when menu opens
+    showMobileNavbar();
+    
     // Add haptic feedback if available
     if (navigator.vibrate) {
         navigator.vibrate(30);
@@ -761,3 +767,144 @@ window.addEventListener('resize', function() {
         closeMobileMenu();
     }
 });
+
+// ========================================
+// MOBILE NAVBAR SLIDE FUNCTIONS
+// ========================================
+
+// Setup mobile navbar - NEW: Initialize mobile navbar behavior
+function setupMobileNavbar() {
+    const navbar = document.getElementById('navbar');
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    let isNavbarVisible = true;
+    let hideTimeout;
+    
+    // Auto-hide navbar after inactivity
+    function resetHideTimer() {
+        clearTimeout(hideTimeout);
+        hideTimeout = setTimeout(() => {
+            hideMobileNavbar();
+        }, 4000); // Hide after 4 seconds of inactivity
+    }
+    
+    // Show mobile navbar with slide animation
+    function showMobileNavbar() {
+        if (!isNavbarVisible) {
+            navbar.classList.remove('mobile-slide-up', 'hidden');
+            navbar.classList.add('mobile-slide-down');
+            isNavbarVisible = true;
+            
+            // Add haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(20);
+            }
+            
+            resetHideTimer();
+        }
+    }
+    
+    // Hide mobile navbar with slide animation
+    function hideMobileNavbar() {
+        if (isNavbarVisible) {
+            navbar.classList.remove('mobile-slide-down');
+            navbar.classList.add('mobile-slide-up');
+            
+            setTimeout(() => {
+                navbar.classList.add('hidden');
+                navbar.classList.remove('mobile-slide-up');
+            }, 400); // Wait for animation to complete
+            
+            isNavbarVisible = false;
+        }
+    }
+    
+    // Touch events for mobile navbar
+    let touchStartY = 0;
+    let touchEndY = 0;
+    
+    // Swipe down to show navbar
+    document.addEventListener('touchstart', function(e) {
+        touchStartY = e.changedTouches[0].screenY;
+    });
+    
+    document.addEventListener('touchend', function(e) {
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchStartY - touchEndY;
+        
+        // Swipe down gesture (from top) to show navbar
+        if (touchStartY < 100 && swipeDistance > swipeThreshold && !isNavbarVisible) {
+            showMobileNavbar();
+        }
+        // Swipe up gesture to hide navbar
+        else if (swipeDistance < -swipeThreshold && isNavbarVisible) {
+            hideMobileNavbar();
+        }
+    }
+    
+    // Show navbar on tap at top of screen
+    const navbarHoverArea = document.querySelector('.navbar-hover-area');
+    if (navbarHoverArea) {
+        navbarHoverArea.addEventListener('touchstart', function() {
+            if (!isNavbarVisible) {
+                showMobileNavbar();
+            }
+        });
+    }
+    
+    // Reset hide timer on any interaction
+    document.addEventListener('touchstart', resetHideTimer);
+    document.addEventListener('scroll', resetHideTimer);
+    
+    // Show navbar when mobile menu is opened
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.addEventListener('touchstart', function() {
+            if (!isNavbarVisible) {
+                showMobileNavbar();
+            }
+        });
+    }
+    
+    // Initial hide timer
+    resetHideTimer();
+}
+
+// Show mobile navbar - NEW: Public function to show navbar
+function showMobileNavbar() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.remove('mobile-slide-up', 'hidden');
+    navbar.classList.add('mobile-slide-down');
+    
+    // Add haptic feedback
+    if (navigator.vibrate) {
+        navigator.vibrate(20);
+    }
+}
+
+// Hide mobile navbar - NEW: Public function to hide navbar
+function hideMobileNavbar() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.remove('mobile-slide-down');
+    navbar.classList.add('mobile-slide-up');
+    
+    setTimeout(() => {
+        navbar.classList.add('hidden');
+        navbar.classList.remove('mobile-slide-up');
+    }, 400); // Wait for animation to complete
+}
+
+// Toggle mobile navbar - NEW: Toggle navbar visibility
+function toggleMobileNavbar() {
+    const navbar = document.getElementById('navbar');
+    
+    if (navbar.classList.contains('hidden') || navbar.classList.contains('mobile-slide-up')) {
+        showMobileNavbar();
+    } else {
+        hideMobileNavbar();
+    }
+}

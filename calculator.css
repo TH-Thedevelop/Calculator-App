@@ -22,13 +22,70 @@ body
     right: 0;                                 /* NEW: Full width positioning */
     z-index: 1000;                            /* NEW: High z-index to stay above calculator */
     transform: translateY(0);                  /* NEW: Initial position for animation */
-    transition: transform 0.3s ease-in-out;   /* NEW: Smooth slide animation */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* NEW: Enhanced slide animation */
 }
 
 /* Auto-hide navbar when not hovering - NEW: Hide navbar functionality */
 #navbar.hidden
 {
     transform: translateY(-100%);              /* NEW: Slide navbar up and out of view */
+}
+
+/* Mobile navbar slide states - NEW: Enhanced mobile animations */
+#navbar.mobile-slide-down
+{
+    transform: translateY(0);
+    animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar.mobile-slide-up
+{
+    transform: translateY(-100%);
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile navbar slide animations - NEW: Keyframe animations */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* Mobile navbar bounce effect - NEW: Subtle bounce on show */
+#navbar.mobile-bounce
+{
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-100%) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-10%) scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
 }
 
 /* Hover area to show navbar - NEW: Invisible area at top to trigger navbar */
@@ -746,9 +803,25 @@ button:active
         display: block;
     }
     
-    /* Ensure navbar stays visible on mobile */
+    /* Mobile navbar behavior - NEW: Enhanced mobile navbar */
+    #navbar {
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Ensure navbar stays visible on mobile by default */
     #navbar.hidden {
+        transform: translateY(-100%);
+    }
+    
+    /* Mobile navbar slide animations */
+    #navbar.mobile-slide-down {
         transform: translateY(0);
+        animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #navbar.mobile-slide-up {
+        transform: translateY(-100%);
+        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     /* Calculator container for mobile */
