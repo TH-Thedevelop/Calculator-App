@@ -15,7 +15,6 @@ body
 {
     background-color: #777DA7;                 /* NEW: Muted purple background */
     padding: 2px 0;                            /* CHANGED: Reduced from 4px 0 to make it much smaller */
-    box-shadow: 0 2px 10px rgba(119, 125, 167, 0.3); /* NEW: Purple shadow */
     position: fixed;                           /* NEW: Fixed positioning to stay at top */
     top: 0;                                   /* NEW: Position at top of viewport */
     left: 0;                                  /* NEW: Full width positioning */
