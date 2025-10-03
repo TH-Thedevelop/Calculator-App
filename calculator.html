@@ -23,7 +23,9 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="nav-left">
-                <h2>Calculator</h2>
+                <div class="calculator-icon" onclick="showAbout()" title="Calculator - Smart & Accurate">
+                    🧮
+                </div>
             </div>
             
             <!-- Mobile menu toggle button -->
@@ -34,11 +36,11 @@
             </button>
             
             <div class="nav-right">
-                <div class="mode-toggle">
-                    <button id="normal-mode" class="mode-btn active" onclick="switchMode('normal')">Standard</button>
-                    <button id="scientific-mode" class="mode-btn" onclick="switchMode('scientific')">Scientific</button>
-                    <button id="conversion-mode" class="mode-btn" onclick="switchMode('conversion')">Conversion</button>
-                    <button id="navbar-history-btn" class="navbar-history-btn" onclick="toggleHistorySidebar()" title="Toggle History Panel">📜</button>
+                <div class="icon-buttons">
+                    <button id="normal-mode" class="icon-btn active" onclick="switchMode('normal')" title="Standard Calculator">🔢</button>
+                    <button id="scientific-mode" class="icon-btn" onclick="switchMode('scientific')" title="Scientific Calculator">🧮</button>
+                    <button id="conversion-mode" class="icon-btn" onclick="switchMode('conversion')" title="Unit Converter">🔄</button>
+                    <button id="navbar-history-btn" class="icon-btn" onclick="toggleHistorySidebar()" title="Calculation History">📜</button>
                 </div>
             </div>
         </div>

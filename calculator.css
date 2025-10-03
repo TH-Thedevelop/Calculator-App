@@ -129,82 +129,66 @@ body
 }
 
 
-/* Navigation title styling - NEW: Calculator title in navbar */
-.nav-container h2
+/* Calculator icon - NEW: Icon-based navbar */
+.calculator-icon
 {
-    margin: 0;               /* NEW: Remove default margin */
-    color: white;            /* NEW: White text */
-    font-size: 1.2rem;       /* NEW: Title font size */
-    font-weight: 600;        /* NEW: Bold text */
+    font-size: 1.8rem;       /* NEW: Large icon size */
+    cursor: pointer;         /* NEW: Pointer cursor for interactivity */
+    transition: all 0.3s ease; /* NEW: Smooth transitions */
+    padding: 5px;            /* NEW: Padding for touch target */
+    border-radius: 8px;      /* NEW: Rounded corners */
 }
 
-/* Mode toggle button container - NEW: Container for Normal/Scientific buttons */
-.mode-toggle
+/* Calculator icon hover effect - NEW: Interactive icon */
+.calculator-icon:hover
+{
+    transform: scale(1.1);   /* NEW: Scale on hover */
+    background-color: rgba(255, 255, 255, 0.1); /* NEW: Light background on hover */
+}
+
+/* Icon buttons container - NEW: Container for icon buttons */
+.icon-buttons
 {
     display: flex;             /* NEW: Flexbox for horizontal button layout */
-    gap: 4px;                /* CHANGED: Reduced from 6px to 4px for ultra-tight spacing */
+    gap: 6px;                /* NEW: Spacing between icon buttons */
+    align-items: center;      /* NEW: Center align buttons */
 }
 
-/* Mode toggle buttons - NEW: Beautiful color palette mode buttons */
-.mode-btn
+/* Icon buttons - NEW: Beautiful icon-based buttons */
+.icon-btn
 {
-    padding: 3px 8px;                        /* CHANGED: Reduced from 4px 12px to 3px 8px for ultra-compact size */
+    padding: 8px;                            /* NEW: Square padding for icon buttons */
     border: none;                            /* NEW: Remove default button border */
-    border-radius: 12px;                     /* CHANGED: Reduced from 15px to 12px for more compact look */
+    border-radius: 10px;                     /* NEW: Rounded corners */
     background-color: #94C9A9;               /* NEW: Muted green button background */
-    color: white;                            /* NEW: White text on buttons */
-    font-size: 0.75rem;                      /* CHANGED: Reduced from 0.8rem to 0.75rem for ultra-small text */
-    font-weight: bold;                       /* NEW: Bold text for better visibility */
+    color: white;                            /* NEW: White icons */
+    font-size: 1.2rem;                       /* NEW: Large icon size */
     cursor: pointer;                         /* NEW: Pointer cursor on hover */
     transition: all 0.3s ease;              /* NEW: Smooth transitions for hover effects */
-    box-shadow: 0 1px 3px rgba(148, 201, 169, 0.3); /* NEW: Subtle green shadow */
+    box-shadow: 0 2px 6px rgba(148, 201, 169, 0.3); /* NEW: Subtle green shadow */
+    width: 40px;                             /* NEW: Fixed width for consistency */
+    height: 40px;                            /* NEW: Fixed height for consistency */
+    display: flex;                           /* NEW: Flexbox for centering */
+    align-items: center;                     /* NEW: Center align icon */
+    justify-content: center;                 /* NEW: Center justify icon */
 }
 
-/* Mode button hover effects - NEW: Beautiful color palette hover states */
-.mode-btn:hover
+/* Icon button hover effects - NEW: Beautiful hover states */
+.icon-btn:hover
 {
     background-color: #C6ECAE;                 /* NEW: Light green on hover */
-    transform: translateY(-2px);               /* NEW: Subtle lift effect on hover */
-    box-shadow: 0 2px 6px rgba(198, 236, 174, 0.4); /* NEW: Green shadow on hover */
+    transform: translateY(-2px) scale(1.05);   /* NEW: Lift and scale effect */
+    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Enhanced shadow on hover */
 }
 
-/* Active mode button styling - NEW: Beautiful color palette active state */
-.mode-btn.active
+/* Active icon button styling - NEW: Beautiful active state */
+.icon-btn.active
 {
     background-color: #FE5F55;                 /* NEW: Orange for active state */
     box-shadow: 0 4px 15px rgba(254, 95, 85, 0.4); /* NEW: Orange glow effect */
+    transform: scale(1.05);                   /* NEW: Slight scale for active state */
 }
 
-/* Navbar history button - NEW: History icon in navbar */
-.navbar-history-btn
-{
-    background-color: #94C9A9;                 /* NEW: Green background */
-    color: white;                              /* NEW: White text */
-    border: none;                              /* NEW: No border */
-    padding: 6px 12px;                         /* NEW: Button padding */
-    border-radius: 12px;                       /* NEW: Rounded corners */
-    font-size: 1rem;                           /* NEW: Font size */
-    font-weight: 600;                          /* NEW: Bold text */
-    cursor: pointer;                           /* NEW: Pointer cursor */
-    transition: all 0.3s ease;                 /* NEW: Smooth transitions */
-    box-shadow: 0 2px 6px rgba(148, 201, 169, 0.3); /* NEW: Green shadow */
-    margin-left: 8px;                          /* NEW: Space from mode buttons */
-}
-
-/* Navbar history button hover - NEW: Hover effect */
-.navbar-history-btn:hover
-{
-    background-color: #C6ECAE;                 /* NEW: Light green on hover */
-    transform: translateY(-2px);               /* NEW: Lift effect */
-    box-shadow: 0 4px 12px rgba(198, 236, 174, 0.4); /* NEW: Enhanced shadow */
-}
-
-/* Navbar history button active - NEW: Active state */
-.navbar-history-btn:active
-{
-    background-color: #FE5F55;                 /* NEW: Orange when active */
-    transform: translateY(0);                  /* NEW: Reset transform */
-}
 
 /* ========================================
    MOBILE MENU STYLES
@@ -772,9 +756,10 @@ button:active
         display: none;
     }
     
-    /* Title adjustments for mobile */
-    .nav-container h2 {
-        font-size: 1rem;
+    /* Calculator icon adjustments for mobile */
+    .calculator-icon {
+        font-size: 1.4rem;
+        padding: 4px;
     }
     
     /* Mobile menu specific styles */
@@ -897,8 +882,15 @@ button:active
         font-size: 0.9rem;
     }
     
-    .nav-container h2 {
-        font-size: 0.9rem;
+    .calculator-icon {
+        font-size: 1.2rem;
+        padding: 3px;
+    }
+    
+    .icon-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
     
     .mode-btn {
@@ -942,8 +934,15 @@ button:active
         font-size: 1.2rem;
     }
     
-    .nav-container h2 {
-        font-size: 1.1rem;
+    .calculator-icon {
+        font-size: 1.6rem;
+        padding: 6px;
+    }
+    
+    .icon-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.3rem;
     }
 }
 
@@ -1119,8 +1118,15 @@ button:active
         display: none;
     }
     
-    .nav-container h2 {
-        font-size: 1rem;
+    .calculator-icon {
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+    
+    .icon-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
     }
     
     /* Mobile menu adjustments for iPhone 13 */
@@ -1189,8 +1195,15 @@ button:active
 /* iPhone 13 Pro (390x844) - Same as iPhone 13 */
 @media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (-webkit-min-device-pixel-ratio: 3) {
     /* Inherits iPhone 13 styles with Pro-specific adjustments */
-    .nav-container h2 {
-        font-size: 1.05rem;
+    .calculator-icon {
+        font-size: 1.55rem;
+        padding: 5px;
+    }
+    
+    .icon-btn {
+        width: 39px;
+        height: 39px;
+        font-size: 1.15rem;
     }
     
     #display {
@@ -1229,8 +1242,15 @@ button:active
         padding: 0 12px;
     }
     
-    .nav-container h2 {
-        font-size: 1.15rem;
+    .calculator-icon {
+        font-size: 1.7rem;
+        padding: 6px;
+    }
+    
+    .icon-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1.25rem;
     }
     
     .mode-btn {
@@ -1345,8 +1365,15 @@ button:active
         border-radius: 9px;
     }
     
-    .nav-container h2 {
-        font-size: 0.9rem;
+    .calculator-icon {
+        font-size: 1.3rem;
+        padding: 4px;
+    }
+    
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
     
     .mode-btn {
