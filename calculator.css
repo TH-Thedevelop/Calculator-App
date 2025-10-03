@@ -128,34 +128,14 @@ body
     flex: 0 0 auto;
 }
 
-/* Logo container - NEW: Container for calculator logo */
-.logo-container
-{
-    display: flex;             /* NEW: Flexbox for logo alignment */
-    align-items: center;       /* NEW: Center align logo vertically */
-}
 
-/* Calculator logo - NEW: SVG logo styling */
-.calculator-logo
-{
-    width: 400px;             /* NEW: Set logo width */
-    height: 100px;             /* NEW: Set logo height */
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* NEW: Subtle shadow */
-    transition: all 0.3s ease; /* NEW: Smooth transitions */
-    cursor: pointer;           /* NEW: Pointer cursor for interactivity */
-}
-
-/* Calculator logo hover effect - NEW: Interactive logo */
-.calculator-logo:hover
-{
-    transform: scale(1.05);    /* NEW: Slight scale on hover */
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); /* NEW: Enhanced shadow on hover */
-}
-
-/* Navigation title styling - NEW: Calculator title in navbar (now hidden) */
+/* Navigation title styling - NEW: Calculator title in navbar */
 .nav-container h2
 {
-    display: none;            /* CHANGED: Hide text title since we have logo now */
+    margin: 0;               /* NEW: Remove default margin */
+    color: white;            /* NEW: White text */
+    font-size: 1.2rem;       /* NEW: Title font size */
+    font-weight: 600;        /* NEW: Bold text */
 }
 
 /* Mode toggle button container - NEW: Container for Normal/Scientific buttons */
@@ -792,10 +772,9 @@ button:active
         display: none;
     }
     
-    /* Logo adjustments for mobile */
-    .calculator-logo {
-        width: 120px;
-        height: 24px;
+    /* Title adjustments for mobile */
+    .nav-container h2 {
+        font-size: 1rem;
     }
     
     /* Mobile menu specific styles */
@@ -918,9 +897,8 @@ button:active
         font-size: 0.9rem;
     }
     
-    .calculator-logo {
-        width: 100px;
-        height: 20px;
+    .nav-container h2 {
+        font-size: 0.9rem;
     }
     
     .mode-btn {
@@ -964,9 +942,8 @@ button:active
         font-size: 1.2rem;
     }
     
-    .calculator-logo {
-        width: 140px;
-        height: 28px;
+    .nav-container h2 {
+        font-size: 1.1rem;
     }
 }
 
@@ -1098,10 +1075,6 @@ button:active
         box-shadow: 0 2px 8px rgba(148, 201, 169, 0.3);
     }
     
-    .calculator-logo:hover {
-        transform: none;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-    }
     
     .mode-btn:hover {
         transform: none;
@@ -1116,14 +1089,6 @@ button:active
     }
 }
 
-/* High DPI displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    /* Optimize for retina displays */
-    .calculator-logo {
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-    }
-}
 
 /* ========================================
    IPHONE 13 SERIES SPECIFIC OPTIMIZATIONS
@@ -1154,9 +1119,8 @@ button:active
         display: none;
     }
     
-    .calculator-logo {
-        width: 130px;
-        height: 26px;
+    .nav-container h2 {
+        font-size: 1rem;
     }
     
     /* Mobile menu adjustments for iPhone 13 */
@@ -1225,9 +1189,8 @@ button:active
 /* iPhone 13 Pro (390x844) - Same as iPhone 13 */
 @media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (-webkit-min-device-pixel-ratio: 3) {
     /* Inherits iPhone 13 styles with Pro-specific adjustments */
-    .calculator-logo {
-        width: 135px;
-        height: 27px;
+    .nav-container h2 {
+        font-size: 1.05rem;
     }
     
     #display {
@@ -1266,9 +1229,8 @@ button:active
         padding: 0 12px;
     }
     
-    .calculator-logo {
-        width: 150px;
-        height: 30px;
+    .nav-container h2 {
+        font-size: 1.15rem;
     }
     
     .mode-btn {
@@ -1383,9 +1345,8 @@ button:active
         border-radius: 9px;
     }
     
-    .calculator-logo {
-        width: 120px;
-        height: 24px;
+    .nav-container h2 {
+        font-size: 0.9rem;
     }
     
     .mode-btn {
@@ -1410,10 +1371,6 @@ button:active
         -webkit-user-select: none;
     }
     
-    .calculator-logo {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-    }
     
     /* Prevent zoom on input focus for iOS */
     input, button, select, textarea {
