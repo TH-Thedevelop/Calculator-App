@@ -54,13 +54,34 @@ body
     padding: 0 5px;          /* CHANGED: Reduced from 15px to 10px for even smaller navbar */
 }
 
-/* Navigation title styling - NEW: Calculator title in navbar */
+/* Logo container - NEW: Container for calculator logo */
+.logo-container
+{
+    display: flex;             /* NEW: Flexbox for logo alignment */
+    align-items: center;       /* NEW: Center align logo vertically */
+}
+
+/* Calculator logo - NEW: SVG logo styling */
+.calculator-logo
+{
+    width: 400px;             /* NEW: Set logo width */
+    height: 100px;             /* NEW: Set logo height */
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* NEW: Subtle shadow */
+    transition: all 0.3s ease; /* NEW: Smooth transitions */
+    cursor: pointer;           /* NEW: Pointer cursor for interactivity */
+}
+
+/* Calculator logo hover effect - NEW: Interactive logo */
+.calculator-logo:hover
+{
+    transform: scale(1.05);    /* NEW: Slight scale on hover */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); /* NEW: Enhanced shadow on hover */
+}
+
+/* Navigation title styling - NEW: Calculator title in navbar (now hidden) */
 .nav-container h2
 {
-    color: white;              /* NEW: White text on dark navbar */
-    margin: 0;                /* NEW: Remove default margin */
-    font-size: 1rem;          /* CHANGED: Reduced from 1.1rem to 1rem for ultra-compact navbar */
-    font-weight: bold;        /* NEW: Bold text for emphasis */
+    display: none;            /* CHANGED: Hide text title since we have logo now */
 }
 
 /* Mode toggle button container - NEW: Container for Normal/Scientific buttons */
@@ -231,7 +252,7 @@ body
     width: 240px;                          /* NEW: Fixed width for history panel */
     height: 100%;                          /* NEW: Full height of calculator */
     background-color: #94C9A9;             /* NEW: Green background matching theme */
-    border-radius: 0 20px 20px 0;          /* NEW: Rounded right corners */
+    border-radius: 20px 20px 20px 20px;          /* NEW: Rounded right corners */
     border: 2px solid #777DA7;             /* NEW: Purple border accent */
     box-shadow: -4px 0 15px rgba(119, 125, 167, 0.3); /* NEW: Left shadow */
     transition: right 0.3s ease-in-out;    /* NEW: Smooth slide animation */

@@ -515,6 +515,69 @@ function quickConvert(conversionType) {
     }
 }
 
+// About dialog function - NEW: Show calculator information
+function showAbout() {
+    const aboutText = `
+🧮 Calculator - Smart & Accurate
+
+Features:
+• Standard Mode: Basic arithmetic operations
+• Scientific Mode: Advanced mathematical functions
+• Conversion Mode: Unit conversions for temperature, length, weight, and volume
+• Calculation History: Track your calculations with timestamps
+• Keyboard Shortcuts: Ctrl+H (history), Ctrl+L (clear history), ↑/↓ (navigate)
+
+Version: 1.0
+Built with HTML5, CSS3, and JavaScript
+
+Click anywhere to close this dialog.
+    `;
+    
+    // Create a modal dialog
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        cursor: pointer;
+    `;
+    
+    const content = document.createElement('div');
+    content.style.cssText = `
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        white-space: pre-line;
+        cursor: default;
+    `;
+    
+    content.innerHTML = aboutText.replace(/\n/g, '<br>');
+    modal.appendChild(content);
+    document.body.appendChild(modal);
+    
+    // Close modal when clicked
+    modal.addEventListener('click', function() {
+        document.body.removeChild(modal);
+    });
+    
+    // Prevent content click from closing modal
+    content.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+}
+
 // Basic calculator mode - NEW: Simplified version without advanced functions
 function addToDisplayBasic(input)
 {

@@ -12,7 +12,26 @@
     <!-- Adding navbar -->
     <nav id="navbar">
         <div class="nav-container">
-            <h2>Calculator</h2>
+            <div class="logo-container">
+                <svg class="calculator-logo" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" onclick="showAbout()" title="Calculator - Smart & Accurate">
+                    <!-- Menu icon -->
+                    <rect x="5" y="8" width="12" height="12" rx="2" fill="#4A90E2"/>
+                    <line x1="7" y1="12" x2="15" y2="12" stroke="white" stroke-width="1.5"/>
+                    <line x1="7" y1="14" x2="15" y2="14" stroke="white" stroke-width="1.5"/>
+                    <line x1="7" y1="16" x2="15" y2="16" stroke="white" stroke-width="1.5"/>
+                    <!-- Gear icon -->
+                    <circle cx="11" cy="25" r="3" fill="none" stroke="#4A90E2" stroke-width="1"/>
+                    <circle cx="11" cy="25" r="1.5" fill="#4A90E2"/>
+                    <path d="M11,22 L11,20 M11,30 L11,32 M8,25 L6,25 M16,25 L18,25 M9.5,21.5 L8.5,19.5 M14.5,28.5 L15.5,30.5 M9.5,28.5 L8.5,30.5 M14.5,21.5 L15.5,19.5" stroke="#4A90E2" stroke-width="0.8"/>
+                    <!-- CALCULATOR text -->
+                    <text x="25" y="16" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50">CALCULATOR</text>
+                    <!-- Calculator display (T letter) -->
+                    <rect x="25" y="18" width="20" height="12" rx="2" fill="#4A90E2"/>
+                    <text x="27" y="26" font-family="Arial, sans-serif" font-size="6" fill="white">1+2=3</text>
+                    <!-- Smart & Accurate tagline -->
+                    <text x="25" y="34" font-family="Arial, sans-serif" font-size="7" fill="#ADD4E5">Smart &amp; Accurate</text>
+                </svg>
+            </div>
             <div class="mode-toggle">
                 <button id="normal-mode" class="mode-btn active" onclick="switchMode('normal')">Standard</button>
                 <button id="scientific-mode" class="mode-btn" onclick="switchMode('scientific')">Scientific</button>
