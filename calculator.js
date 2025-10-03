@@ -69,6 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // NEW: Mobile-friendly improvements
     if (isTouchDevice) {
+        // Detect iPhone 13 series specifically
+        const isIPhone13 = /iPhone/.test(navigator.userAgent) && 
+                          (window.screen.width === 390 || window.screen.width === 428) &&
+                          (window.screen.height === 844 || window.screen.height === 926);
+        
         // Prevent zoom on double tap for buttons
         const buttons = document.querySelectorAll('button');
         buttons.forEach(button => {
@@ -77,11 +82,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Add haptic feedback for supported devices
+        // Add haptic feedback for supported devices (iPhone 13 series has advanced haptics)
         buttons.forEach(button => {
             button.addEventListener('click', function() {
                 if (navigator.vibrate) {
-                    navigator.vibrate(50); // 50ms vibration
+                    // Different vibration patterns for iPhone 13 series
+                    if (isIPhone13) {
+                        navigator.vibrate(30); // Lighter haptic for iPhone 13
+                    } else {
+                        navigator.vibrate(50); // Standard vibration for other devices
+                    }
                 }
             });
         });
@@ -90,6 +100,34 @@ document.addEventListener('DOMContentLoaded', function() {
         const display = document.getElementById('display');
         display.style.webkitUserSelect = 'none';
         display.style.userSelect = 'none';
+        
+        // iPhone 13 specific optimizations
+        if (isIPhone13) {
+            // Add iOS-specific viewport meta tag handling
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
+            }
+            
+            // Optimize for iPhone 13 notch and safe areas
+            document.body.style.paddingTop = 'env(safe-area-inset-top)';
+            document.body.style.paddingLeft = 'env(safe-area-inset-left)';
+            document.body.style.paddingRight = 'env(safe-area-inset-right)';
+            document.body.style.paddingBottom = 'env(safe-area-inset-bottom)';
+            
+            // Add iPhone 13 specific touch improvements
+            buttons.forEach(button => {
+                button.style.webkitTapHighlightColor = 'rgba(148, 201, 169, 0.3)';
+                button.style.webkitTouchCallout = 'none';
+                button.style.webkitUserSelect = 'none';
+            });
+            
+            // Optimize history panel for iPhone 13
+            const historyPanel = document.getElementById('history-sidebar');
+            if (historyPanel) {
+                historyPanel.style.webkitOverflowScrolling = 'touch';
+            }
+        }
     }
 });
 

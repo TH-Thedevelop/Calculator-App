@@ -830,6 +830,344 @@ button:active
     }
 }
 
+/* ========================================
+   IPHONE 13 SERIES SPECIFIC OPTIMIZATIONS
+   ======================================== */
+
+/* iPhone 13 (390x844) */
+@media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+    body {
+        margin-top: 32px;
+        padding: 8px;
+        min-height: calc(100vh - 32px);
+    }
+    
+    #navbar {
+        padding: 1px 0;
+    }
+    
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .calculator-logo {
+        width: 130px;
+        height: 26px;
+    }
+    
+    .mode-btn {
+        padding: 3px 7px;
+        font-size: 0.75rem;
+    }
+    
+    #calculator {
+        max-width: 374px;
+        border-radius: 22px;
+    }
+    
+    #display {
+        padding: 22px 18px;
+        font-size: 2rem;
+        border-top-left-radius: 22px;
+        border-top-right-radius: 22px;
+        min-height: 75px;
+    }
+    
+    .keyboard-mode {
+        padding: 18px;
+        gap: 10px;
+        border-bottom-left-radius: 22px;
+        border-bottom-right-radius: 22px;
+    }
+    
+    #normal-keys button {
+        height: 62px;
+        font-size: 1.25rem;
+        border-radius: 11px;
+    }
+    
+    #scientific-keys button {
+        height: 57px;
+        font-size: 1.05rem;
+        border-radius: 11px;
+    }
+    
+    #conversion-keys button {
+        height: 62px;
+        font-size: 1.15rem;
+        border-radius: 11px;
+    }
+    
+    .history-panel {
+        width: 220px;
+        right: -220px;
+    }
+    
+    .history-panel:not(.hidden) {
+        right: -220px;
+    }
+}
+
+/* iPhone 13 Pro (390x844) - Same as iPhone 13 */
+@media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (-webkit-min-device-pixel-ratio: 3) {
+    /* Inherits iPhone 13 styles with Pro-specific adjustments */
+    .calculator-logo {
+        width: 135px;
+        height: 27px;
+    }
+    
+    #display {
+        font-size: 2.1rem;
+    }
+    
+    #normal-keys button {
+        height: 64px;
+        font-size: 1.3rem;
+    }
+    
+    #scientific-keys button {
+        height: 59px;
+        font-size: 1.1rem;
+    }
+    
+    #conversion-keys button {
+        height: 64px;
+        font-size: 1.2rem;
+    }
+}
+
+/* iPhone 13 Pro Max (428x926) */
+@media screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
+    body {
+        margin-top: 34px;
+        padding: 10px;
+        min-height: calc(100vh - 34px);
+    }
+    
+    #navbar {
+        padding: 2px 0;
+    }
+    
+    .nav-container {
+        padding: 0 12px;
+    }
+    
+    .calculator-logo {
+        width: 150px;
+        height: 30px;
+    }
+    
+    .mode-btn {
+        padding: 3px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .navbar-history-btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+    
+    #calculator {
+        max-width: 408px;
+        border-radius: 24px;
+    }
+    
+    #display {
+        padding: 26px 22px;
+        font-size: 2.3rem;
+        border-top-left-radius: 24px;
+        border-top-right-radius: 24px;
+        min-height: 85px;
+    }
+    
+    .keyboard-mode {
+        padding: 22px;
+        gap: 12px;
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+    }
+    
+    #normal-keys button {
+        height: 68px;
+        font-size: 1.35rem;
+        border-radius: 12px;
+    }
+    
+    #scientific-keys button {
+        height: 63px;
+        font-size: 1.15rem;
+        border-radius: 12px;
+    }
+    
+    #conversion-keys button {
+        height: 68px;
+        font-size: 1.25rem;
+        border-radius: 12px;
+    }
+    
+    .history-panel {
+        width: 240px;
+        right: -240px;
+    }
+    
+    .history-panel:not(.hidden) {
+        right: -240px;
+    }
+    
+    .history-header {
+        padding: 16px;
+    }
+    
+    .history-header h3 {
+        font-size: 1.1rem;
+    }
+    
+    .history-item {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* iPhone 13 series landscape orientation */
+@media screen and (device-width: 844px) and (device-height: 390px) and (-webkit-device-pixel-ratio: 3),
+       screen and (device-width: 926px) and (device-height: 428px) and (-webkit-device-pixel-ratio: 3) {
+    body {
+        margin-top: 28px;
+        min-height: calc(100vh - 28px);
+        padding: 6px;
+    }
+    
+    #navbar {
+        padding: 1px 0;
+    }
+    
+    #calculator {
+        max-width: 95vw;
+        border-radius: 18px;
+    }
+    
+    #display {
+        padding: 18px 22px;
+        font-size: 1.9rem;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+        min-height: 55px;
+    }
+    
+    .keyboard-mode {
+        padding: 14px;
+        gap: 9px;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+    }
+    
+    #normal-keys button,
+    #scientific-keys button,
+    #conversion-keys button {
+        height: 48px;
+        font-size: 1.1rem;
+        border-radius: 9px;
+    }
+    
+    .calculator-logo {
+        width: 120px;
+        height: 24px;
+    }
+    
+    .mode-btn {
+        padding: 2px 6px;
+        font-size: 0.7rem;
+    }
+}
+
+/* iPhone 13 series with iOS Safari specific adjustments */
+@supports (-webkit-touch-callout: none) {
+    /* iOS Safari specific styles */
+    #display {
+        -webkit-appearance: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+    }
+    
+    button {
+        -webkit-tap-highlight-color: rgba(148, 201, 169, 0.3);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+    }
+    
+    .calculator-logo {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+    }
+    
+    /* Prevent zoom on input focus for iOS */
+    input, button, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* iPhone 13 series Safe Area adjustments */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(10px, env(safe-area-inset-left));
+        padding-right: max(10px, env(safe-area-inset-right));
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    
+    #navbar {
+        padding-left: max(0px, env(safe-area-inset-left));
+        padding-right: max(0px, env(safe-area-inset-right));
+    }
+    
+    #calculator {
+        margin-left: max(0px, env(safe-area-inset-left));
+        margin-right: max(0px, env(safe-area-inset-right));
+    }
+}
+
+/* iPhone 13 series Dark Mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+    }
+    
+    #calculator {
+        background-color: #2d2d2d;
+        border-color: #4a4a4a;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+    
+    .keyboard-mode {
+        background-color: #3a3a3a;
+    }
+    
+    .history-panel {
+        background-color: #2d2d2d;
+        border-color: #4a4a4a;
+    }
+    
+    .history-item {
+        background-color: #3a3a3a;
+        color: #ffffff;
+    }
+    
+    .history-item:hover {
+        background-color: #4a4a4a;
+    }
+    
+    .history-expression {
+        color: #ffffff;
+    }
+    
+    .history-result {
+        color: #94C9A9;
+    }
+    
+    .history-timestamp {
+        color: #777DA7;
+    }
+}
+
 /* Print styles */
 @media print {
     body {
