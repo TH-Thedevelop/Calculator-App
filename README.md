@@ -60,7 +60,7 @@ A modern, feature-rich web-based calculator application built with HTML5, CSS3, 
 ### Installation & Running
 
 #### Option 1: Live Demo (GitHub Pages)
-🚀 **Try it online**: [Calculator App Live Demo](https://th-thedeveloper.github.io/Calculator-App/calculator.html)
+🚀 **Try it online**: [Calculator App Live Demo](https://th-thedevelop.github.io/Calculator-App/calculator.html)
 
 No installation required - just click the link above!
 
@@ -187,8 +187,8 @@ sqrt(16) = 4
 
 ### GitHub Pages (Automatic)
 This project is automatically deployed to GitHub Pages:
-- **Live URL**: https://th-thedeveloper.github.io/Calculator-App/calculator.html
-- **Repository**: https://github.com/TH-Thedeveloper/Calculator-App
+- **Live URL**: https://th-thedevelop.github.io/Calculator-App/calculator.html
+- **Repository**: https://github.com/TH-Thedevelop/Calculator-App
 - **Deployment**: Automatic on every push to `main` branch
 
 ### Manual Deployment Steps
@@ -199,12 +199,12 @@ This project is automatically deployed to GitHub Pages:
    - Select "Deploy from a branch"
    - Choose `main` branch and `/ (root)` folder
    - Save settings
-3. **Access your deployment**: `https://th-thedeveloper.github.io/Calculator-App/calculator.html`
+3. **Access your deployment**: `https://th-thedevelop.github.io/Calculator-App/calculator.html`
 
 ### Local Development
 ```bash
 # Clone the repository
-git clone https://github.com/TH-Thedeveloper/Calculator-App.git
+git clone https://github.com/TH-Thedevelop/Calculator-App.git
 cd Calculator-App
 
 # Start local development server
