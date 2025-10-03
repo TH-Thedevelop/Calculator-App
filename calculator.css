@@ -1428,48 +1428,6 @@ button:active
     }
 }
 
-/* iPhone 13 series Dark Mode support */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #1a1a1a;
-    }
-    
-    #calculator {
-        background-color: #2d2d2d;
-        border-color: #4a4a4a;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    }
-    
-    .keyboard-mode {
-        background-color: #3a3a3a;
-    }
-    
-    .history-panel {
-        background-color: #2d2d2d;
-        border-color: #4a4a4a;
-    }
-    
-    .history-item {
-        background-color: #3a3a3a;
-        color: #ffffff;
-    }
-    
-    .history-item:hover {
-        background-color: #4a4a4a;
-    }
-    
-    .history-expression {
-        color: #ffffff;
-    }
-    
-    .history-result {
-        color: #94C9A9;
-    }
-    
-    .history-timestamp {
-        color: #777DA7;
-    }
-}
 
 /* Print styles */
 @media print {
