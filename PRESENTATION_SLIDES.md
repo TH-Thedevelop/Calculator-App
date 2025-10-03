@@ -131,19 +131,19 @@ A comprehensive calculator application featuring:
 **How to Access the Application**
 
 **Option 1: Live Demo (GitHub Pages)**
-🚀 **Try it online**: https://will-quinnan.github.io/Calculator-App/calculator.html
+🚀 **Try it online**: https://th-thedeveloper.github.io/Calculator-App/calculator.html
 
 No installation required - just click the link!
 
 **Option 2: Local Development**
 ```bash
-git clone https://github.com/Will-Quinnan/Calculator-App.git
+git clone https://github.com/TH-Thedeveloper/Calculator-App.git
 cd Calculator-App
 python3 -m http.server 8000
 # Visit: http://localhost:8000/calculator.html
 ```
 
-**Repository**: https://github.com/Will-Quinnan/Calculator-App
+**Repository**: https://github.com/TH-Thedeveloper/Calculator-App
 
 ---
 
@@ -245,8 +245,8 @@ python3 -m http.server 8000
 - Code review and suggestions
 
 **Contact & Resources**:
-- GitHub Repository: [Link to repo]
-- Live Demo: [Link to demo]
+- GitHub Repository: https://github.com/TH-Thedeveloper/Calculator-App
+- Live Demo: https://th-thedeveloper.github.io/Calculator-App/calculator.html
 - Documentation: README.md included
 
 *Thank you for your attention!*
