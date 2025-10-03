@@ -10,147 +10,38 @@ body
     border-top-right-radius: 25px; /* Adjust this value */
 }
 
-/* Navigation bar styling - NEW: Beautiful color palette navbar */
+/* Navigation bar styling */
 #navbar
 {
-    background: linear-gradient(135deg, #B27179 0%, #FFB37B 50%, #FFF19C 100%); /* NEW: Gradient background */
-    padding: 2px 0;                            /* CHANGED: Reduced from 4px 0 to make it much smaller */
-    box-shadow: 0 2px 10px rgba(178, 113, 121, 0.3); /* NEW: Soft shadow */
-    position: fixed;                           /* NEW: Fixed positioning to stay at top */
-    top: 0;                                   /* NEW: Position at top of viewport */
-    left: 0;                                  /* NEW: Full width positioning */
-    right: 0;                                 /* NEW: Full width positioning */
-    z-index: 1000;                            /* NEW: High z-index to stay above calculator */
-    transform: translateY(0);                  /* NEW: Initial position for animation */
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* NEW: Enhanced slide animation */
+    background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #F5F5DC 100%);
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(135, 206, 235, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
-/* Auto-hide navbar when not hovering - NEW: Hide navbar functionality */
-#navbar.hidden
-{
-    transform: translateY(-100%);              /* NEW: Slide navbar up and out of view */
-}
 
-/* Mobile navbar slide states - NEW: Enhanced mobile animations */
-#navbar.mobile-slide-down
-{
-    transform: translateY(0);
-    animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#navbar.mobile-slide-up
-{
-    transform: translateY(-100%);
-    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Mobile navbar slide animations - NEW: Keyframe animations */
-@keyframes slideDown {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideUp {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-}
-
-/* Mobile navbar bounce effect - NEW: Subtle bounce on show */
-#navbar.mobile-bounce
-{
-    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: translateY(-100%) scale(0.8);
-        opacity: 0;
-    }
-    50% {
-        transform: translateY(-10%) scale(1.05);
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-}
-
-/* Hover area to show navbar - NEW: Invisible area at top to trigger navbar */
-.navbar-hover-area
-{
-    position: fixed;                           /* NEW: Fixed positioning */
-    top: 0;                                   /* NEW: At top of viewport */
-    left: 0;                                  /* NEW: Full width */
-    right: 0;                                 /* NEW: Full width */
-    height: 10px;                             /* NEW: Small hover area */
-    z-index: 1001;                            /* NEW: Above navbar */
-    background: transparent;                  /* NEW: Invisible */
-}
-
-/* Navigation container - NEW: Flexible layout for navbar content */
+/* Navigation container */
 .nav-container
 {
-    max-width: 1000px;          /* NEW: Match calculator max width */
-    margin: 0 auto;            /* NEW: Center the navbar content */
-    display: flex;             /* NEW: Flexbox for horizontal layout */
-    justify-content: space-between; /* NEW: Space between sections */
-    align-items: center;       /* NEW: Vertically center content */
-    padding: 0 5px;          /* CHANGED: Reduced from 15px to 10px for even smaller navbar */
-    position: relative;       /* NEW: For mobile menu positioning */
-}
-
-/* Navigation left section - NEW: Logo area */
-.nav-left
-{
+    max-width: 1000px;
+    margin: 0 auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    flex: 0 0 auto;
+    padding: 0 20px;
 }
 
-/* Navigation right section - NEW: Mode toggle area */
-.nav-right
+/* Navigation title */
+.nav-container h2
 {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-}
-
-
-/* Logo container - NEW: Container for calculator logo */
-.logo-container
-{
-    display: flex;             /* NEW: Flexbox for logo alignment */
-    align-items: center;       /* NEW: Center align logo vertically */
-}
-
-/* Calculator logo - NEW: SVG logo styling */
-.calculator-logo
-{
-    width: 200px;             /* NEW: Set logo width */
-    height: 40px;             /* NEW: Set logo height */
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); /* NEW: Subtle shadow */
-    transition: all 0.3s ease; /* NEW: Smooth transitions */
-    cursor: pointer;           /* NEW: Pointer cursor for interactivity */
-}
-
-/* Calculator logo hover effect - NEW: Interactive logo */
-.calculator-logo:hover
-{
-    transform: scale(1.05);    /* NEW: Slight scale on hover */
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); /* NEW: Enhanced shadow on hover */
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 /* Mode toggle button container - NEW: Container for Normal/Scientific buttons */
@@ -166,37 +57,37 @@ body
     padding: 3px 8px;                        /* CHANGED: Reduced from 4px 12px to 3px 8px for ultra-compact size */
     border: none;                            /* NEW: Remove default button border */
     border-radius: 12px;                     /* CHANGED: Reduced from 15px to 12px for more compact look */
-    background-color: rgba(255, 255, 255, 0.2); /* NEW: Semi-transparent white background */
-    color: white;                            /* NEW: White text on buttons */
+    background-color: rgba(255, 255, 255, 0.3); /* NEW: Semi-transparent white background */
+    color: #4682B4;                          /* NEW: Steel blue text on buttons */
     font-size: 0.75rem;                      /* CHANGED: Reduced from 0.8rem to 0.75rem for ultra-small text */
     font-weight: bold;                       /* NEW: Bold text for better visibility */
     cursor: pointer;                         /* NEW: Pointer cursor on hover */
     transition: all 0.3s ease;              /* NEW: Smooth transitions for hover effects */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* NEW: Subtle shadow */
+    box-shadow: 0 1px 3px rgba(70, 130, 180, 0.2); /* NEW: Subtle blue shadow */
     backdrop-filter: blur(10px);             /* NEW: Glass effect */
 }
 
 /* Mode button hover effects - NEW: Beautiful color palette hover states */
 .mode-btn:hover
 {
-    background-color: rgba(255, 255, 255, 0.3); /* NEW: More opaque white on hover */
+    background-color: rgba(255, 255, 255, 0.5); /* NEW: More opaque white on hover */
     transform: translateY(-2px);               /* NEW: Subtle lift effect on hover */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* NEW: Enhanced shadow on hover */
+    box-shadow: 0 2px 6px rgba(70, 130, 180, 0.3); /* NEW: Enhanced blue shadow on hover */
 }
 
 /* Active mode button styling - NEW: Beautiful color palette active state */
 .mode-btn.active
 {
-    background-color: #FFF19C;                 /* NEW: Cream color for active state */
-    color: #B27179;                           /* NEW: Dark text for contrast */
-    box-shadow: 0 4px 15px rgba(255, 241, 156, 0.4); /* NEW: Cream glow effect */
+    background-color: #F5F5DC;                 /* NEW: Beige color for active state */
+    color: #4682B4;                           /* NEW: Steel blue text for contrast */
+    box-shadow: 0 4px 15px rgba(245, 245, 220, 0.4); /* NEW: Beige glow effect */
 }
 
 /* Navbar history button - NEW: History icon in navbar */
 .navbar-history-btn
 {
-    background-color: rgba(255, 255, 255, 0.2); /* NEW: Semi-transparent background */
-    color: white;                              /* NEW: White text */
+    background-color: rgba(255, 255, 255, 0.3); /* NEW: Semi-transparent background */
+    color: #4682B4;                              /* NEW: Steel blue text */
     border: none;                              /* NEW: No border */
     padding: 6px 12px;                         /* NEW: Button padding */
     border-radius: 12px;                       /* NEW: Rounded corners */
@@ -204,7 +95,7 @@ body
     font-weight: 600;                          /* NEW: Bold text */
     cursor: pointer;                           /* NEW: Pointer cursor */
     transition: all 0.3s ease;                 /* NEW: Smooth transitions */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* NEW: Subtle shadow */
+    box-shadow: 0 1px 3px rgba(70, 130, 180, 0.2); /* NEW: Subtle blue shadow */
     margin-left: 8px;                          /* NEW: Space from mode buttons */
     backdrop-filter: blur(10px);               /* NEW: Glass effect */
 }
@@ -212,243 +103,44 @@ body
 /* Navbar history button hover - NEW: Hover effect */
 .navbar-history-btn:hover
 {
-    background-color: rgba(255, 255, 255, 0.3); /* NEW: More opaque white on hover */
+    background-color: rgba(255, 255, 255, 0.5); /* NEW: More opaque white on hover */
     transform: translateY(-2px);               /* NEW: Lift effect */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* NEW: Enhanced shadow */
+    box-shadow: 0 2px 6px rgba(70, 130, 180, 0.3); /* NEW: Enhanced blue shadow */
 }
 
 /* Navbar history button active - NEW: Active state */
 .navbar-history-btn:active
 {
-    background-color: #FFF19C;                 /* NEW: Cream when active */
-    color: #B27179;                           /* NEW: Dark text for contrast */
+    background-color: #F5F5DC;                 /* NEW: Beige when active */
+    color: #4682B4;                           /* NEW: Steel blue text for contrast */
     transform: translateY(0);                  /* NEW: Reset transform */
 }
 
 
-/* ========================================
-   MOBILE MENU STYLES
-   ======================================== */
 
-/* Mobile menu toggle button - NEW: Hamburger menu */
-.mobile-menu-toggle
-{
-    display: none;                             /* NEW: Hidden by default */
-    flex-direction: column;                    /* NEW: Stack hamburger lines */
-    justify-content: center;                   /* NEW: Center hamburger lines */
-    align-items: center;                       /* NEW: Center hamburger lines */
-    width: 40px;                              /* NEW: Fixed width */
-    height: 40px;                             /* NEW: Fixed height */
-    background: none;                         /* NEW: No background */
-    border: none;                             /* NEW: No border */
-    cursor: pointer;                          /* NEW: Pointer cursor */
-    padding: 8px;                             /* NEW: Padding for touch target */
-    border-radius: 8px;                       /* NEW: Rounded corners */
-    transition: all 0.3s ease;                /* NEW: Smooth transitions */
-}
-
-/* Hamburger lines - NEW: Three lines for menu */
-.hamburger-line
-{
-    width: 20px;                              /* NEW: Line width */
-    height: 2px;                              /* NEW: Line height */
-    background-color: white;                  /* NEW: White lines */
-    margin: 2px 0;                            /* NEW: Space between lines */
-    transition: all 0.3s ease;                /* NEW: Smooth transitions */
-    border-radius: 1px;                       /* NEW: Rounded line ends */
-}
-
-/* Mobile menu toggle hover - NEW: Hover effect */
-.mobile-menu-toggle:hover
-{
-    background-color: rgba(255, 255, 255, 0.1); /* NEW: Light background on hover */
-}
-
-.mobile-menu-toggle:hover .hamburger-line
-{
-    background-color: #C6ECAE;                /* NEW: Light green on hover */
-}
-
-/* Mobile menu toggle active - NEW: Active state (hamburger to X) */
-.mobile-menu-toggle.active .hamburger-line:nth-child(1)
-{
-    transform: rotate(45deg) translate(5px, 5px); /* NEW: Rotate first line */
-}
-
-.mobile-menu-toggle.active .hamburger-line:nth-child(2)
-{
-    opacity: 0;                               /* NEW: Hide middle line */
-}
-
-.mobile-menu-toggle.active .hamburger-line:nth-child(3)
-{
-    transform: rotate(-45deg) translate(7px, -6px); /* NEW: Rotate third line */
-}
-
-/* Mobile menu - NEW: Dropdown menu */
-.mobile-menu
-{
-    position: absolute;                        /* NEW: Absolute positioning */
-    top: 100%;                                /* NEW: Below navbar */
-    left: 0;                                  /* NEW: Full width */
-    right: 0;                                 /* NEW: Full width */
-    background-color: #777DA7;                /* NEW: Purple background */
-    border-bottom-left-radius: 15px;          /* NEW: Rounded bottom corners */
-    border-bottom-right-radius: 15px;         /* NEW: Rounded bottom corners */
-    box-shadow: 0 4px 20px rgba(119, 125, 167, 0.3); /* NEW: Drop shadow */
-    transform: translateY(-100%);             /* NEW: Start hidden above */
-    opacity: 0;                               /* NEW: Start transparent */
-    visibility: hidden;                       /* NEW: Start hidden */
-    transition: all 0.3s ease-in-out;         /* NEW: Smooth transitions */
-    z-index: 999;                             /* NEW: Above other elements */
-    overflow: hidden;                         /* NEW: Hide overflow */
-}
-
-/* Mobile menu when open - NEW: Show menu */
-.mobile-menu.open
-{
-    transform: translateY(0);                 /* NEW: Slide into view */
-    opacity: 1;                               /* NEW: Make visible */
-    visibility: visible;                      /* NEW: Make visible */
-}
-
-/* Mobile menu content - NEW: Content container */
-.mobile-menu-content
-{
-    padding: 20px;                            /* NEW: Content padding */
-}
-
-/* Mobile mode toggle - NEW: Mode selection */
-.mobile-mode-toggle
-{
-    display: flex;                            /* NEW: Flexbox layout */
-    flex-direction: column;                   /* NEW: Vertical layout */
-    gap: 8px;                                 /* NEW: Space between buttons */
-    margin-bottom: 20px;                      /* NEW: Space below */
-}
-
-/* Mobile mode button - NEW: Mode selection button */
-.mobile-mode-btn
-{
-    display: flex;                            /* NEW: Flexbox layout */
-    align-items: center;                      /* NEW: Center align items */
-    padding: 12px 16px;                       /* NEW: Button padding */
-    background-color: rgba(255, 255, 255, 0.1); /* NEW: Semi-transparent background */
-    border: none;                             /* NEW: No border */
-    border-radius: 10px;                      /* NEW: Rounded corners */
-    color: white;                             /* NEW: White text */
-    font-size: 1rem;                          /* NEW: Font size */
-    font-weight: 500;                         /* NEW: Medium weight */
-    cursor: pointer;                          /* NEW: Pointer cursor */
-    transition: all 0.3s ease;                /* NEW: Smooth transitions */
-    text-align: left;                         /* NEW: Left align text */
-    width: 100%;                              /* NEW: Full width */
-}
-
-/* Mobile mode button hover - NEW: Hover effect */
-.mobile-mode-btn:hover
-{
-    background-color: rgba(198, 236, 174, 0.3); /* NEW: Light green background */
-    transform: translateX(4px);               /* NEW: Slide right */
-}
-
-/* Mobile mode button active - NEW: Active state */
-.mobile-mode-btn.active
-{
-    background-color: #FE5F55;                /* NEW: Orange background */
-    box-shadow: 0 2px 8px rgba(254, 95, 85, 0.3); /* NEW: Orange shadow */
-}
-
-/* Mobile mode icon - NEW: Mode icon styling */
-.mode-icon
-{
-    font-size: 1.2rem;                        /* NEW: Icon size */
-    margin-right: 12px;                       /* NEW: Space after icon */
-    width: 24px;                              /* NEW: Fixed icon width */
-    text-align: center;                       /* NEW: Center icon */
-}
-
-/* Mobile mode text - NEW: Mode text styling */
-.mode-text
-{
-    flex: 1;                                  /* NEW: Take remaining space */
-    font-size: 1rem;                          /* NEW: Text size */
-}
-
-/* Mobile menu actions - NEW: Action buttons */
-.mobile-menu-actions
-{
-    display: flex;                            /* NEW: Flexbox layout */
-    flex-direction: column;                   /* NEW: Vertical layout */
-    gap: 8px;                                 /* NEW: Space between buttons */
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* NEW: Top border */
-    padding-top: 16px;                        /* NEW: Top padding */
-}
-
-/* Mobile action button - NEW: Action button */
-.mobile-action-btn
-{
-    display: flex;                            /* NEW: Flexbox layout */
-    align-items: center;                      /* NEW: Center align items */
-    padding: 10px 16px;                       /* NEW: Button padding */
-    background-color: rgba(255, 255, 255, 0.1); /* NEW: Semi-transparent background */
-    border: none;                             /* NEW: No border */
-    border-radius: 8px;                       /* NEW: Rounded corners */
-    color: white;                             /* NEW: White text */
-    font-size: 0.9rem;                        /* NEW: Font size */
-    font-weight: 400;                         /* NEW: Normal weight */
-    cursor: pointer;                          /* NEW: Pointer cursor */
-    transition: all 0.3s ease;                /* NEW: Smooth transitions */
-    text-align: left;                         /* NEW: Left align text */
-    width: 100%;                              /* NEW: Full width */
-}
-
-/* Mobile action button hover - NEW: Hover effect */
-.mobile-action-btn:hover
-{
-    background-color: rgba(148, 201, 169, 0.3); /* NEW: Green background */
-    transform: translateX(4px);               /* NEW: Slide right */
-}
-
-/* Mobile action icon - NEW: Action icon styling */
-.action-icon
-{
-    font-size: 1rem;                          /* NEW: Icon size */
-    margin-right: 10px;                       /* NEW: Space after icon */
-    width: 20px;                              /* NEW: Fixed icon width */
-    text-align: center;                       /* NEW: Center icon */
-}
-
-/* Mobile action text - NEW: Action text styling */
-.action-text
-{
-    flex: 1;                                  /* NEW: Take remaining space */
-    font-size: 0.9rem;                        /* NEW: Text size */
-}
-
-/* Body layout adjustment - CHANGED: Account for fixed navbar */
+/* Body layout adjustment */
 body
 {
-    margin-top: 35px;                        /* CHANGED: Reduced from 45px to 35px to match ultra-compact navbar */
-    display: flex;                          /* CHANGED: Flexbox for centering calculator */
-    justify-content: center;                /* CHANGED: Center calculator horizontally */
-    align-items: center;                    /* CHANGED: Center calculator vertically */
-    min-height: calc(100vh - 35px);        /* CHANGED: Adjusted height calculation for ultra-compact navbar */
-    background-color: white;               /* CHANGED: White background for calculator area */
-    padding: 10px;                         /* NEW: Add padding for mobile devices */
-    box-sizing: border-box;                /* NEW: Include padding in width calculation */
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
 }
 /* Calculator container - NEW: Beautiful color palette styling */
 #calculator
 {
     font-family: 'Segoe UI', Arial, sans-serif; /* IMPROVED: Better font family */
-    background: linear-gradient(135deg, #FFF19C 0%, #FFB37B 50%, #B27179 100%); /* NEW: Gradient background */
+    background: linear-gradient(135deg, #F5F5DC 0%, #B0E0E6 50%, #87CEEB 100%); /* NEW: Gradient background */
     border-radius: 25px;                        /* IMPROVED: More rounded corners */
     max-width: 575px;                           /* CHANGED: Increased width for conversion mode */
     width: 100%;                                /* IMPROVED: Responsive width */
     overflow: visible;                          /* CHANGED: Allow history sidebar to overflow */
-    box-shadow: 0 8px 32px rgba(178, 113, 121, 0.3); /* NEW: Soft shadow */
-    border: 2px solid rgba(255, 255, 255, 0.3); /* NEW: Glass border accent */
+    box-shadow: 0 8px 32px rgba(135, 206, 235, 0.3); /* NEW: Soft blue shadow */
+    border: 2px solid rgba(255, 255, 255, 0.4); /* NEW: Glass border accent */
     position: relative;                         /* NEW: Relative positioning for sidebar */
     min-width: 280px;                          /* NEW: Minimum width for mobile */
     margin: 0 auto;                            /* NEW: Center calculator on larger screens */
@@ -463,7 +155,7 @@ body
     border-top-left-radius: 25px; /* Adjust this value */
     border-top-right-radius: 25px; /* Adjust this value */
     border: none;                           /* ORIGINAL: No border */
-    background: linear-gradient(135deg, #B27179 0%, #FFB37B 100%); /* NEW: Gradient background */
+    background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%); /* NEW: Gradient background */
     color: white;                           /* ORIGINAL: White text */
     font-weight: 300;                       /* IMPROVED: Lighter font weight for modern look */
     letter-spacing: 1px;                    /* IMPROVED: Better character spacing */
@@ -479,7 +171,7 @@ body
     display: grid;                          /* CHANGED: Grid layout for button arrangement */
     gap: 12px;                             /* IMPROVED: Better spacing between buttons */
     padding: 20px;                         /* IMPROVED: More organized padding */
-    background: linear-gradient(135deg, #FFF19C 0%, #FFB37B 100%); /* NEW: Gradient background */
+    background: linear-gradient(135deg, #F5F5DC 0%, #B0E0E6 100%); /* NEW: Gradient background */
     border-bottom-left-radius: 25px; /* Adjust this value */
     border-bottom-right-radius: 25px; /* Adjust this value */
 }
@@ -671,12 +363,12 @@ button
     border-radius: 12px;                    /* IMPROVED: More modern rounded corners */
     border: none;                           /* ORIGINAL: No border */
     background-color: rgba(255, 255, 255, 0.8); /* NEW: Semi-transparent white background */
-    color: #B27179;                         /* NEW: Dark text for contrast */
+    color: #4682B4;                         /* NEW: Steel blue text for contrast */
     font-size: 1.6rem;                      /* IMPROVED: Better font size */
     font-weight: 500;                       /* IMPROVED: Medium font weight */
     cursor: pointer;                        /* ORIGINAL: Pointer cursor */
     transition: all 0.2s ease;             /* IMPROVED: Smooth transitions */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* NEW: Subtle shadow */
+    box-shadow: 0 2px 8px rgba(70, 130, 180, 0.1); /* NEW: Subtle blue shadow */
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); /* NEW: Light text shadow */
     backdrop-filter: blur(10px);            /* NEW: Glass effect */
 }
@@ -686,747 +378,84 @@ button:hover
 {
     background-color: rgba(255, 255, 255, 0.9); /* NEW: More opaque white on hover */
     transform: translateY(-1px);               /* IMPROVED: Subtle lift effect */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* NEW: Enhanced shadow */
+    box-shadow: 0 4px 12px rgba(70, 130, 180, 0.2); /* NEW: Enhanced blue shadow */
 }
 
 button:active
 {
-    background-color: #FFF19C;               /* NEW: Cream accent on click */
+    background-color: #F5F5DC;               /* NEW: Beige accent on click */
     transform: translateY(0);                  /* IMPROVED: Reset transform on click */
 }
 
 /* Operator button styling - NEW: Beautiful color palette operator styling */
 .operator-btn
 {
-    background-color: #B27179;                 /* NEW: Soft mauve for operators */
+    background-color: #4682B4;                 /* NEW: Steel blue for operators */
     color: white;                              /* IMPROVED: Ensure white text */
     font-weight: 600;                          /* IMPROVED: Bolder text for operators */
-    box-shadow: 0 2px 8px rgba(178, 113, 121, 0.3); /* NEW: Soft shadow */
+    box-shadow: 0 2px 8px rgba(70, 130, 180, 0.3); /* NEW: Blue shadow */
 }
 
 .operator-btn:hover
 {
-    background-color: #FFB37B;                /* NEW: Peach on hover */
+    background-color: #87CEEB;                /* NEW: Sky blue on hover */
     transform: translateY(-1px);               /* IMPROVED: Consistent hover effect */
-    box-shadow: 0 4px 12px rgba(255, 179, 123, 0.4); /* NEW: Peach shadow on hover */
+    box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4); /* NEW: Sky blue shadow on hover */
 }
 
 .operator-btn:active
 {
-    background-color: #FFF19C;                 /* NEW: Cream accent on click */
-    color: #B27179;                           /* NEW: Dark text for contrast */
+    background-color: #F5F5DC;                 /* NEW: Beige accent on click */
+    color: #4682B4;                           /* NEW: Steel blue text for contrast */
 }
 
 /* History button styling - NEW: Beautiful color palette history styling */
 .history-btn
 {
-    background-color: #FFB37B;                   /* NEW: Peach for history buttons */
-    color: white;                                /* NEW: White text */
+    background-color: #B0E0E6;                   /* NEW: Powder blue for history buttons */
+    color: #4682B4;                              /* NEW: Steel blue text */
     font-weight: 600;                            /* NEW: Bold text */
     font-size: 1.2rem;                          /* NEW: Slightly smaller font for icons */
-    box-shadow: 0 2px 8px rgba(255, 179, 123, 0.3); /* NEW: Peach shadow */
+    box-shadow: 0 2px 8px rgba(176, 224, 230, 0.3); /* NEW: Powder blue shadow */
 }
 
 .history-btn:hover
 {
-    background-color: #B27179;                   /* NEW: Mauve on hover */
+    background-color: #87CEEB;                   /* NEW: Sky blue on hover */
     transform: translateY(-1px);                 /* NEW: Consistent hover effect */
-    box-shadow: 0 4px 12px rgba(178, 113, 121, 0.4); /* NEW: Mauve shadow on hover */
+    box-shadow: 0 4px 12px rgba(135, 206, 235, 0.4); /* NEW: Sky blue shadow on hover */
 }
 
 .history-btn:active
 {
-    background-color: #FFF19C;                   /* NEW: Cream accent on click */
-    color: #B27179;                             /* NEW: Dark text for contrast */
+    background-color: #F5F5DC;                   /* NEW: Beige accent on click */
+    color: #4682B4;                             /* NEW: Steel blue text for contrast */
 }
 
 /* Conversion button styling - NEW: Beautiful color palette conversion styling */
 .convert-btn
 {
-    background-color: #FFF19C;                   /* NEW: Cream for conversion buttons */
-    color: #B27179;                             /* NEW: Dark text for contrast */
+    background-color: #F5F5DC;                   /* NEW: Beige for conversion buttons */
+    color: #4682B4;                             /* NEW: Steel blue text for contrast */
     font-weight: 600;                            /* NEW: Bold text */
     font-size: 1rem;                            /* NEW: Smaller font for conversion labels */
-    box-shadow: 0 2px 8px rgba(255, 241, 156, 0.3); /* NEW: Cream shadow */
+    box-shadow: 0 2px 8px rgba(245, 245, 220, 0.3); /* NEW: Beige shadow */
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); /* NEW: Light text shadow */
 }
 
 .convert-btn:hover
 {
-    background-color: #FFB37B;                   /* NEW: Peach on hover */
+    background-color: #B0E0E6;                   /* NEW: Powder blue on hover */
     transform: translateY(-1px);                 /* NEW: Consistent hover effect */
-    box-shadow: 0 4px 12px rgba(255, 179, 123, 0.4); /* NEW: Peach shadow on hover */
+    box-shadow: 0 4px 12px rgba(176, 224, 230, 0.4); /* NEW: Powder blue shadow on hover */
 }
 
 .convert-btn:active
 {
-    background-color: #B27179;                   /* NEW: Mauve accent on click */
+    background-color: #4682B4;                   /* NEW: Steel blue accent on click */
     color: white;                               /* NEW: White text for contrast */
 }
 
-/* ========================================
-   RESPONSIVE DESIGN - MOBILE FIRST APPROACH
-   ======================================== */
-
-/* Mobile devices (320px and up) */
-@media screen and (max-width: 768px) {
-    /* Body adjustments for mobile */
-    body {
-        margin-top: 30px;
-        padding: 5px;
-        min-height: calc(100vh - 30px);
-    }
-    
-    /* Navbar adjustments for mobile */
-    #navbar {
-        padding: 1px 0;
-    }
-    
-    .nav-container {
-        padding: 0 8px;
-        justify-content: space-between;
-    }
-    
-    /* Show mobile menu toggle, hide desktop mode toggle */
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .nav-right {
-        display: none;
-    }
-    
-    /* Calculator logo adjustments for mobile */
-    .calculator-logo {
-        width: 150px;
-        height: 30px;
-    }
-    
-    /* Mobile menu specific styles */
-    .mobile-menu {
-        display: block;
-    }
-    
-    /* Mobile navbar behavior - NEW: Enhanced mobile navbar */
-    #navbar {
-        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Ensure navbar stays visible on mobile by default */
-    #navbar.hidden {
-        transform: translateY(-100%);
-    }
-    
-    /* Mobile navbar slide animations */
-    #navbar.mobile-slide-down {
-        transform: translateY(0);
-        animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    #navbar.mobile-slide-up {
-        transform: translateY(-100%);
-        animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    /* Calculator container for mobile */
-    #calculator {
-        max-width: 100%;
-        min-width: 280px;
-        border-radius: 20px;
-    }
-    
-    /* Display adjustments for mobile */
-    #display {
-        padding: 20px 15px;
-        font-size: 1.8rem;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        min-height: 70px;
-    }
-    
-    /* Button area adjustments for mobile */
-    .keyboard-mode {
-        padding: 15px;
-        gap: 8px;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-    }
-    
-    /* Normal mode buttons for mobile */
-    #normal-keys button {
-        height: 60px;
-        font-size: 1.2rem;
-        border-radius: 10px;
-    }
-    
-    /* Scientific mode buttons for mobile */
-    #scientific-keys button {
-        height: 55px;
-        font-size: 1rem;
-        border-radius: 10px;
-    }
-    
-    /* Conversion mode buttons for mobile */
-    #conversion-keys button {
-        height: 60px;
-        font-size: 1.1rem;
-        border-radius: 10px;
-    }
-    
-    /* History sidebar for mobile */
-    .history-panel {
-        width: 200px;
-        right: -200px;
-    }
-    
-    .history-panel:not(.hidden) {
-        right: -200px;
-    }
-    
-    .history-header {
-        padding: 12px;
-    }
-    
-    .history-header h3 {
-        font-size: 1rem;
-    }
-    
-    .history-item {
-        padding: 8px;
-        font-size: 0.8rem;
-    }
-}
-
-/* Small mobile devices (320px to 375px) */
-@media screen and (max-width: 375px) {
-    /* Even smaller adjustments for very small screens */
-    #display {
-        font-size: 1.6rem;
-        padding: 15px 12px;
-        min-height: 60px;
-    }
-    
-    .keyboard-mode {
-        padding: 12px;
-        gap: 6px;
-    }
-    
-    #normal-keys button,
-    #conversion-keys button {
-        height: 55px;
-        font-size: 1.1rem;
-    }
-    
-    #scientific-keys button {
-        height: 50px;
-        font-size: 0.9rem;
-    }
-    
-    .calculator-logo {
-        width: 120px;
-        height: 24px;
-    }
-    
-    .mode-btn {
-        padding: 1px 4px;
-        font-size: 0.65rem;
-    }
-}
-
-/* Tablet devices (481px to 768px) */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    body {
-        padding: 15px;
-    }
-    
-    #calculator {
-        max-width: 500px;
-    }
-    
-    #display {
-        font-size: 2.2rem;
-        padding: 22px 18px;
-    }
-    
-    .keyboard-mode {
-        padding: 18px;
-        gap: 10px;
-    }
-    
-    #normal-keys button {
-        height: 65px;
-        font-size: 1.3rem;
-    }
-    
-    #scientific-keys button {
-        height: 60px;
-        font-size: 1.1rem;
-    }
-    
-    #conversion-keys button {
-        height: 65px;
-        font-size: 1.2rem;
-    }
-    
-    .calculator-logo {
-        width: 180px;
-        height: 36px;
-    }
-}
-
-/* Desktop and larger tablets (769px and up) */
-@media screen and (min-width: 769px) {
-    body {
-        padding: 20px;
-    }
-    
-    #calculator {
-        max-width: 575px;
-    }
-    
-    #display {
-        font-size: 2.5rem;
-        padding: 25px 20px;
-    }
-    
-    .keyboard-mode {
-        padding: 20px;
-        gap: 12px;
-    }
-    
-    /* History sidebar for desktop */
-    .history-panel {
-        width: 240px;
-        right: -250px;
-    }
-    
-    .history-panel:not(.hidden) {
-        right: -250px;
-    }
-}
-
-/* Large desktop screens (1200px and up) */
-@media screen and (min-width: 1200px) {
-    #calculator {
-        max-width: 600px;
-    }
-    
-    #display {
-        font-size: 2.8rem;
-        padding: 30px 25px;
-    }
-    
-    .keyboard-mode {
-        padding: 25px;
-        gap: 15px;
-    }
-    
-    #normal-keys button {
-        height: 75px;
-        font-size: 1.5rem;
-    }
-    
-    #scientific-keys button {
-        height: 70px;
-        font-size: 1.3rem;
-    }
-    
-    #conversion-keys button {
-        height: 75px;
-        font-size: 1.4rem;
-    }
-}
-
-/* Landscape orientation adjustments for mobile */
-@media screen and (max-height: 500px) and (orientation: landscape) {
-    body {
-        margin-top: 25px;
-        min-height: calc(100vh - 25px);
-        padding: 5px;
-    }
-    
-    #navbar {
-        padding: 1px 0;
-    }
-    
-    #calculator {
-        max-width: 90vw;
-        border-radius: 15px;
-    }
-    
-    #display {
-        padding: 15px 20px;
-        font-size: 1.8rem;
-        border-top-left-radius: 15px;
-        border-top-right-radius: 15px;
-        min-height: 50px;
-    }
-    
-    .keyboard-mode {
-        padding: 12px;
-        gap: 8px;
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
-    
-    #normal-keys button,
-    #scientific-keys button,
-    #conversion-keys button {
-        height: 45px;
-        font-size: 1rem;
-        border-radius: 8px;
-    }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-    /* Optimize for touch devices */
-    button {
-        min-height: 44px; /* Apple's recommended touch target size */
-        min-width: 44px;
-    }
-    
-    .mode-btn {
-        min-height: 36px;
-        min-width: 36px;
-    }
-    
-    .navbar-history-btn {
-        min-height: 40px;
-        min-width: 40px;
-    }
-    
-    /* Remove hover effects on touch devices */
-    button:hover {
-        transform: none;
-        box-shadow: 0 2px 8px rgba(148, 201, 169, 0.3);
-    }
-    
-    
-    .mode-btn:hover {
-        transform: none;
-        background-color: #94C9A9;
-        box-shadow: 0 1px 3px rgba(148, 201, 169, 0.3);
-    }
-    
-    .navbar-history-btn:hover {
-        transform: none;
-        background-color: #94C9A9;
-        box-shadow: 0 2px 6px rgba(148, 201, 169, 0.3);
-    }
-}
-
-
-/* ========================================
-   IPHONE 13 SERIES SPECIFIC OPTIMIZATIONS
-   ======================================== */
-
-/* iPhone 13 (390x844) */
-@media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
-    body {
-        margin-top: 32px;
-        padding: 8px;
-        min-height: calc(100vh - 32px);
-    }
-    
-    #navbar {
-        padding: 1px 0;
-    }
-    
-    .nav-container {
-        padding: 0 10px;
-    }
-    
-    /* Show mobile menu toggle, hide desktop mode toggle */
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
-    .nav-right {
-        display: none;
-    }
-    
-    .calculator-logo {
-        width: 160px;
-        height: 32px;
-    }
-    
-    /* Mobile menu adjustments for iPhone 13 */
-    .mobile-menu-content {
-        padding: 16px;
-    }
-    
-    .mobile-mode-btn {
-        padding: 14px 16px;
-        font-size: 1.1rem;
-    }
-    
-    .mobile-action-btn {
-        padding: 12px 16px;
-        font-size: 1rem;
-    }
-    
-    #calculator {
-        max-width: 374px;
-        border-radius: 22px;
-    }
-    
-    #display {
-        padding: 22px 18px;
-        font-size: 2rem;
-        border-top-left-radius: 22px;
-        border-top-right-radius: 22px;
-        min-height: 75px;
-    }
-    
-    .keyboard-mode {
-        padding: 18px;
-        gap: 10px;
-        border-bottom-left-radius: 22px;
-        border-bottom-right-radius: 22px;
-    }
-    
-    #normal-keys button {
-        height: 62px;
-        font-size: 1.25rem;
-        border-radius: 11px;
-    }
-    
-    #scientific-keys button {
-        height: 57px;
-        font-size: 1.05rem;
-        border-radius: 11px;
-    }
-    
-    #conversion-keys button {
-        height: 62px;
-        font-size: 1.15rem;
-        border-radius: 11px;
-    }
-    
-    .history-panel {
-        width: 220px;
-        right: -220px;
-    }
-    
-    .history-panel:not(.hidden) {
-        right: -220px;
-    }
-}
-
-/* iPhone 13 Pro (390x844) - Same as iPhone 13 */
-@media screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (-webkit-min-device-pixel-ratio: 3) {
-    /* Inherits iPhone 13 styles with Pro-specific adjustments */
-    .calculator-logo {
-        width: 165px;
-        height: 33px;
-    }
-    
-    #display {
-        font-size: 2.1rem;
-    }
-    
-    #normal-keys button {
-        height: 64px;
-        font-size: 1.3rem;
-    }
-    
-    #scientific-keys button {
-        height: 59px;
-        font-size: 1.1rem;
-    }
-    
-    #conversion-keys button {
-        height: 64px;
-        font-size: 1.2rem;
-    }
-}
-
-/* iPhone 13 Pro Max (428x926) */
-@media screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
-    body {
-        margin-top: 34px;
-        padding: 10px;
-        min-height: calc(100vh - 34px);
-    }
-    
-    #navbar {
-        padding: 2px 0;
-    }
-    
-    .nav-container {
-        padding: 0 12px;
-    }
-    
-    .calculator-logo {
-        width: 190px;
-        height: 38px;
-    }
-    
-    .mode-btn {
-        padding: 3px 8px;
-        font-size: 0.8rem;
-    }
-    
-    .navbar-history-btn {
-        padding: 5px 10px;
-        font-size: 0.9rem;
-    }
-    
-    #calculator {
-        max-width: 408px;
-        border-radius: 24px;
-    }
-    
-    #display {
-        padding: 26px 22px;
-        font-size: 2.3rem;
-        border-top-left-radius: 24px;
-        border-top-right-radius: 24px;
-        min-height: 85px;
-    }
-    
-    .keyboard-mode {
-        padding: 22px;
-        gap: 12px;
-        border-bottom-left-radius: 24px;
-        border-bottom-right-radius: 24px;
-    }
-    
-    #normal-keys button {
-        height: 68px;
-        font-size: 1.35rem;
-        border-radius: 12px;
-    }
-    
-    #scientific-keys button {
-        height: 63px;
-        font-size: 1.15rem;
-        border-radius: 12px;
-    }
-    
-    #conversion-keys button {
-        height: 68px;
-        font-size: 1.25rem;
-        border-radius: 12px;
-    }
-    
-    .history-panel {
-        width: 240px;
-        right: -240px;
-    }
-    
-    .history-panel:not(.hidden) {
-        right: -240px;
-    }
-    
-    .history-header {
-        padding: 16px;
-    }
-    
-    .history-header h3 {
-        font-size: 1.1rem;
-    }
-    
-    .history-item {
-        padding: 10px;
-        font-size: 0.85rem;
-    }
-}
-
-/* iPhone 13 series landscape orientation */
-@media screen and (device-width: 844px) and (device-height: 390px) and (-webkit-device-pixel-ratio: 3),
-       screen and (device-width: 926px) and (device-height: 428px) and (-webkit-device-pixel-ratio: 3) {
-    body {
-        margin-top: 28px;
-        min-height: calc(100vh - 28px);
-        padding: 6px;
-    }
-    
-    #navbar {
-        padding: 1px 0;
-    }
-    
-    #calculator {
-        max-width: 95vw;
-        border-radius: 18px;
-    }
-    
-    #display {
-        padding: 18px 22px;
-        font-size: 1.9rem;
-        border-top-left-radius: 18px;
-        border-top-right-radius: 18px;
-        min-height: 55px;
-    }
-    
-    .keyboard-mode {
-        padding: 14px;
-        gap: 9px;
-        border-bottom-left-radius: 18px;
-        border-bottom-right-radius: 18px;
-    }
-    
-    #normal-keys button,
-    #scientific-keys button,
-    #conversion-keys button {
-        height: 48px;
-        font-size: 1.1rem;
-        border-radius: 9px;
-    }
-    
-    .calculator-logo {
-        width: 140px;
-        height: 28px;
-    }
-    
-    .mode-btn {
-        padding: 2px 6px;
-        font-size: 0.7rem;
-    }
-}
-
-/* iPhone 13 series with iOS Safari specific adjustments */
-@supports (-webkit-touch-callout: none) {
-    /* iOS Safari specific styles */
-    #display {
-        appearance: none;
-        -webkit-appearance: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
-    }
-    
-    button {
-        -webkit-tap-highlight-color: rgba(148, 201, 169, 0.3);
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-    }
-    
-    
-    /* Prevent zoom on input focus for iOS */
-    input, button, select, textarea {
-        font-size: 16px !important;
-    }
-}
-
-/* iPhone 13 series Safe Area adjustments */
-@supports (padding: max(0px)) {
-    body {
-        padding-left: max(10px, env(safe-area-inset-left));
-        padding-right: max(10px, env(safe-area-inset-right));
-        padding-bottom: max(10px, env(safe-area-inset-bottom));
-    }
-    
-    #navbar {
-        padding-left: max(0px, env(safe-area-inset-left));
-        padding-right: max(0px, env(safe-area-inset-right));
-    }
-    
-    #calculator {
-        margin-left: max(0px, env(safe-area-inset-left));
-        margin-right: max(0px, env(safe-area-inset-right));
-    }
-}
 
 
 /* Print styles */
