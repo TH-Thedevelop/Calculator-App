@@ -59,7 +59,12 @@ A modern, feature-rich web-based calculator application built with HTML5, CSS3, 
 
 ### Installation & Running
 
-#### Option 1: Simple File Opening
+#### Option 1: Live Demo (GitHub Pages)
+🚀 **Try it online**: [Calculator App Live Demo](https://will-quinnan.github.io/Calculator-App/calculator.html)
+
+No installation required - just click the link above!
+
+#### Option 2: Simple File Opening
 ```bash
 # Navigate to project directory
 cd /path/to/Calculator-App
@@ -74,7 +79,7 @@ start calculator.html
 open calculator.html
 ```
 
-#### Option 2: Local HTTP Server (Recommended)
+#### Option 3: Local HTTP Server (Recommended for Development)
 ```bash
 # Navigate to project directory
 cd /path/to/Calculator-App
@@ -177,6 +182,35 @@ sqrt(16) = 4
 - [ ] Offline PWA support
 - [ ] Voice input support
 - [ ] Customizable button layouts
+
+## 🚀 Deployment
+
+### GitHub Pages (Automatic)
+This project is automatically deployed to GitHub Pages:
+- **Live URL**: https://will-quinnan.github.io/Calculator-App/calculator.html
+- **Repository**: https://github.com/Will-Quinnan/Calculator-App
+- **Deployment**: Automatic on every push to `main` branch
+
+### Manual Deployment Steps
+1. **Fork or Clone** this repository
+2. **Enable GitHub Pages**:
+   - Go to repository Settings
+   - Navigate to Pages section
+   - Select "Deploy from a branch"
+   - Choose `main` branch and `/ (root)` folder
+   - Save settings
+3. **Access your deployment**: `https://yourusername.github.io/Calculator-App/calculator.html`
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/Will-Quinnan/Calculator-App.git
+cd Calculator-App
+
+# Start local development server
+python3 -m http.server 8000
+# Visit: http://localhost:8000/calculator.html
+```
 
 ## 🤝 Contributing
 1. Fork the repository

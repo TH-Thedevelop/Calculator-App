@@ -128,22 +128,22 @@ A comprehensive calculator application featuring:
 ---
 
 ## Slide 10: Getting Started
-**How to Run the Application**
+**How to Access the Application**
 
-**Option 1: Simple File Opening**
-```bash
-cd Calculator-App
-xdg-open calculator.html  # Linux
-start calculator.html     # Windows
-open calculator.html      # macOS
-```
+**Option 1: Live Demo (GitHub Pages)**
+🚀 **Try it online**: https://will-quinnan.github.io/Calculator-App/calculator.html
 
-**Option 2: Local HTTP Server (Recommended)**
+No installation required - just click the link!
+
+**Option 2: Local Development**
 ```bash
+git clone https://github.com/Will-Quinnan/Calculator-App.git
 cd Calculator-App
 python3 -m http.server 8000
-# Then visit: http://localhost:8000/calculator.html
+# Visit: http://localhost:8000/calculator.html
 ```
+
+**Repository**: https://github.com/Will-Quinnan/Calculator-App
 
 ---
 
