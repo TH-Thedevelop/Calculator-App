@@ -21,6 +21,26 @@ body
     left: 0;
     right: 0;
     z-index: 1000;
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Auto-hide navbar when not hovering */
+#navbar.hidden
+{
+    transform: translateY(-100%);
+}
+
+/* Hover area to show navbar */
+.navbar-hover-area
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    z-index: 1001;
+    background: transparent;
 }
 
 
@@ -121,11 +141,11 @@ body
 /* Body layout adjustment */
 body
 {
-    margin-top: 70px;
+    margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
     background-color: white;
     padding: 20px;
     box-sizing: border-box;

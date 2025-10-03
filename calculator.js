@@ -2,9 +2,49 @@ const display = document.getElementById("display");
 let currentMode = 'normal';
 let calculationHistory = []; // NEW: Array to store calculation history
 let historyIndex = -1; // NEW: Index for navigating history
+let hideTimer; // NEW: Timer for auto-hiding navbar
+
+// NEW: Setup navbar auto-hide functionality
+function setupNavbarAutoHide() {
+    const navbar = document.getElementById('navbar');
+    const hoverArea = document.querySelector('.navbar-hover-area');
+    
+    // Hide navbar initially after 2 seconds
+    hideTimer = setTimeout(() => {
+        hideNavbar();
+    }, 2000);
+    
+    // Show navbar when hovering over navbar or hover area
+    navbar.addEventListener('mouseenter', () => {
+        showNavbar();
+        clearTimeout(hideTimer);
+    });
+    
+    navbar.addEventListener('mouseleave', () => {
+        hideTimer = setTimeout(() => {
+            hideNavbar();
+        }, 1000);
+    });
+}
+
+// NEW: Show navbar function
+function showNavbar() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.remove('hidden');
+    clearTimeout(hideTimer);
+}
+
+// NEW: Hide navbar function
+function hideNavbar() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.add('hidden');
+}
 
 // Initialize calculator
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize navbar auto-hide functionality
+    setupNavbarAutoHide();
+    
     // Add keyboard shortcuts for history navigation
     document.addEventListener('keydown', function(event) {
         // Ctrl + H: Show history
