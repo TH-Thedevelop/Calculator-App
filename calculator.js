@@ -22,14 +22,26 @@ function hideNavbar() {
 document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.getElementById('navbar');
     
-    // Hide navbar initially after a short delay
-    setTimeout(() => {
-        navbar.classList.add('hidden');
-    }, 3000); // Hide after 3 seconds initially
+    // Detect if device supports hover (desktop) or not (mobile)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
-    // Show navbar on hover, hide when mouse leaves
-    navbar.addEventListener('mouseenter', showNavbar);
-    navbar.addEventListener('mouseleave', hideNavbar);
+    if (isTouchDevice) {
+        // For mobile devices, keep navbar visible by default
+        navbar.classList.remove('hidden');
+        // Add tap to toggle functionality for mobile
+        navbar.addEventListener('click', function() {
+            navbar.classList.toggle('hidden');
+        });
+    } else {
+        // For desktop devices, use hover behavior
+        setTimeout(() => {
+            navbar.classList.add('hidden');
+        }, 3000); // Hide after 3 seconds initially
+        
+        // Show navbar on hover, hide when mouse leaves
+        navbar.addEventListener('mouseenter', showNavbar);
+        navbar.addEventListener('mouseleave', hideNavbar);
+    }
     
     // NEW: Add keyboard shortcuts for history navigation
     document.addEventListener('keydown', function(event) {
@@ -54,6 +66,31 @@ document.addEventListener('DOMContentLoaded', function() {
             navigateHistory('down');
         }
     });
+    
+    // NEW: Mobile-friendly improvements
+    if (isTouchDevice) {
+        // Prevent zoom on double tap for buttons
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+            });
+        });
+        
+        // Add haptic feedback for supported devices
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                if (navigator.vibrate) {
+                    navigator.vibrate(50); // 50ms vibration
+                }
+            });
+        });
+        
+        // Optimize display for mobile
+        const display = document.getElementById('display');
+        display.style.webkitUserSelect = 'none';
+        display.style.userSelect = 'none';
+    }
 });
 
 function switchMode(mode) {

@@ -161,6 +161,8 @@ body
     align-items: center;                    /* CHANGED: Center calculator vertically */
     min-height: calc(100vh - 35px);        /* CHANGED: Adjusted height calculation for ultra-compact navbar */
     background-color: white;               /* CHANGED: White background for calculator area */
+    padding: 10px;                         /* NEW: Add padding for mobile devices */
+    box-sizing: border-box;                /* NEW: Include padding in width calculation */
 }
 /* Calculator container - NEW: Beautiful color palette styling */
 #calculator
@@ -174,6 +176,8 @@ body
     box-shadow: 0 8px 32px rgba(119, 125, 167, 0.3); /* NEW: Purple shadow */
     border: 2px solid #94C9A9;                  /* NEW: Green border accent */
     position: relative;                         /* NEW: Relative positioning for sidebar */
+    min-width: 280px;                          /* NEW: Minimum width for mobile */
+    margin: 0 auto;                            /* NEW: Center calculator on larger screens */
 }
 /* Calculator display - NEW: Beautiful color palette display */
 #display
@@ -191,6 +195,9 @@ body
     letter-spacing: 1px;                    /* IMPROVED: Better character spacing */
     box-sizing: border-box;                 /* IMPROVED: Include padding in width calculation */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* NEW: Subtle text shadow for readability */
+    min-height: 80px;                       /* NEW: Minimum height for mobile */
+    overflow-wrap: break-word;              /* NEW: Handle long expressions */
+    word-break: break-all;                  /* NEW: Break long numbers */
 }
 /* Keyboard mode containers - NEW: Beautiful color palette button area */
 .keyboard-mode
@@ -477,4 +484,372 @@ button:active
 .convert-btn:active
 {
     background-color: #777DA7;                   /* NEW: Purple accent on click */
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST APPROACH
+   ======================================== */
+
+/* Mobile devices (320px and up) */
+@media screen and (max-width: 480px) {
+    /* Body adjustments for mobile */
+    body {
+        margin-top: 30px;
+        padding: 5px;
+        min-height: calc(100vh - 30px);
+    }
+    
+    /* Navbar adjustments for mobile */
+    #navbar {
+        padding: 1px 0;
+    }
+    
+    .nav-container {
+        padding: 0 8px;
+    }
+    
+    .nav-container h2 {
+        font-size: 0.9rem;
+    }
+    
+    .mode-btn {
+        padding: 2px 6px;
+        font-size: 0.7rem;
+        border-radius: 10px;
+    }
+    
+    .navbar-history-btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+    
+    /* Logo adjustments for mobile */
+    .calculator-logo {
+        width: 120px;
+        height: 24px;
+    }
+    
+    /* Calculator container for mobile */
+    #calculator {
+        max-width: 100%;
+        min-width: 280px;
+        border-radius: 20px;
+    }
+    
+    /* Display adjustments for mobile */
+    #display {
+        padding: 20px 15px;
+        font-size: 1.8rem;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        min-height: 70px;
+    }
+    
+    /* Button area adjustments for mobile */
+    .keyboard-mode {
+        padding: 15px;
+        gap: 8px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    
+    /* Normal mode buttons for mobile */
+    #normal-keys button {
+        height: 60px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+    }
+    
+    /* Scientific mode buttons for mobile */
+    #scientific-keys button {
+        height: 55px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    
+    /* Conversion mode buttons for mobile */
+    #conversion-keys button {
+        height: 60px;
+        font-size: 1.1rem;
+        border-radius: 10px;
+    }
+    
+    /* History sidebar for mobile */
+    .history-panel {
+        width: 200px;
+        right: -200px;
+    }
+    
+    .history-panel:not(.hidden) {
+        right: -200px;
+    }
+    
+    .history-header {
+        padding: 12px;
+    }
+    
+    .history-header h3 {
+        font-size: 1rem;
+    }
+    
+    .history-item {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Small mobile devices (320px to 375px) */
+@media screen and (max-width: 375px) {
+    /* Even smaller adjustments for very small screens */
+    #display {
+        font-size: 1.6rem;
+        padding: 15px 12px;
+        min-height: 60px;
+    }
+    
+    .keyboard-mode {
+        padding: 12px;
+        gap: 6px;
+    }
+    
+    #normal-keys button,
+    #conversion-keys button {
+        height: 55px;
+        font-size: 1.1rem;
+    }
+    
+    #scientific-keys button {
+        height: 50px;
+        font-size: 0.9rem;
+    }
+    
+    .calculator-logo {
+        width: 100px;
+        height: 20px;
+    }
+    
+    .mode-btn {
+        padding: 1px 4px;
+        font-size: 0.65rem;
+    }
+}
+
+/* Tablet devices (481px to 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    #calculator {
+        max-width: 500px;
+    }
+    
+    #display {
+        font-size: 2.2rem;
+        padding: 22px 18px;
+    }
+    
+    .keyboard-mode {
+        padding: 18px;
+        gap: 10px;
+    }
+    
+    #normal-keys button {
+        height: 65px;
+        font-size: 1.3rem;
+    }
+    
+    #scientific-keys button {
+        height: 60px;
+        font-size: 1.1rem;
+    }
+    
+    #conversion-keys button {
+        height: 65px;
+        font-size: 1.2rem;
+    }
+    
+    .calculator-logo {
+        width: 140px;
+        height: 28px;
+    }
+}
+
+/* Desktop and larger tablets (769px and up) */
+@media screen and (min-width: 769px) {
+    body {
+        padding: 20px;
+    }
+    
+    #calculator {
+        max-width: 575px;
+    }
+    
+    #display {
+        font-size: 2.5rem;
+        padding: 25px 20px;
+    }
+    
+    .keyboard-mode {
+        padding: 20px;
+        gap: 12px;
+    }
+    
+    /* History sidebar for desktop */
+    .history-panel {
+        width: 240px;
+        right: -250px;
+    }
+    
+    .history-panel:not(.hidden) {
+        right: -250px;
+    }
+}
+
+/* Large desktop screens (1200px and up) */
+@media screen and (min-width: 1200px) {
+    #calculator {
+        max-width: 600px;
+    }
+    
+    #display {
+        font-size: 2.8rem;
+        padding: 30px 25px;
+    }
+    
+    .keyboard-mode {
+        padding: 25px;
+        gap: 15px;
+    }
+    
+    #normal-keys button {
+        height: 75px;
+        font-size: 1.5rem;
+    }
+    
+    #scientific-keys button {
+        height: 70px;
+        font-size: 1.3rem;
+    }
+    
+    #conversion-keys button {
+        height: 75px;
+        font-size: 1.4rem;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body {
+        margin-top: 25px;
+        min-height: calc(100vh - 25px);
+        padding: 5px;
+    }
+    
+    #navbar {
+        padding: 1px 0;
+    }
+    
+    #calculator {
+        max-width: 90vw;
+        border-radius: 15px;
+    }
+    
+    #display {
+        padding: 15px 20px;
+        font-size: 1.8rem;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        min-height: 50px;
+    }
+    
+    .keyboard-mode {
+        padding: 12px;
+        gap: 8px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+    
+    #normal-keys button,
+    #scientific-keys button,
+    #conversion-keys button {
+        height: 45px;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Optimize for touch devices */
+    button {
+        min-height: 44px; /* Apple's recommended touch target size */
+        min-width: 44px;
+    }
+    
+    .mode-btn {
+        min-height: 36px;
+        min-width: 36px;
+    }
+    
+    .navbar-history-btn {
+        min-height: 40px;
+        min-width: 40px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    button:hover {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(148, 201, 169, 0.3);
+    }
+    
+    .calculator-logo:hover {
+        transform: none;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+    
+    .mode-btn:hover {
+        transform: none;
+        background-color: #94C9A9;
+        box-shadow: 0 1px 3px rgba(148, 201, 169, 0.3);
+    }
+    
+    .navbar-history-btn:hover {
+        transform: none;
+        background-color: #94C9A9;
+        box-shadow: 0 2px 6px rgba(148, 201, 169, 0.3);
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimize for retina displays */
+    .calculator-logo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        margin-top: 0;
+        padding: 0;
+        background: white;
+    }
+    
+    #navbar {
+        display: none;
+    }
+    
+    #calculator {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    button {
+        border: 1px solid #ccc;
+        background: white !important;
+        color: black !important;
+    }
 }
